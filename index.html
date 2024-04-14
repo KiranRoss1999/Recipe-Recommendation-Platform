@@ -1,57 +1,44 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <title>Recipe Reccomendation Platform</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-<<<<<<< HEAD
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
-    />
-=======
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
->>>>>>> 6c8fda0e05f133407c2e98abc5871389d18da37c
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
-    <header>
-      <!-- CONTENT OF FILTERS? RECIPE OPTIONS?? TO DISCUSS -->
-    </header>
+<body>
+<main>
+  <h1>TEST</h1>
+  <div>
+    <form id="yt-form">
+      <label class="form-label" id="yt-label">Youtube API</label>
+      <input type="text" id="yt-input" placeholder="Search Here">
+      <select id="yt-dropdown">
+        <option>By Tag</option>
+        <option>By Youtube ID</option>
+        <option>By Placeholder</option>
+      </select>
+      <button type="submit" id="yt-submit">Search</button>
+    </form>
 
-    <div>
-      <!-- BACKDROP OF HERO IMAGE -->
-    </div>
+    <form id="spoon-form">
+      <label class="form-label" id="spoon-label">Spoonacular API</label>
+      <input type="text" id="spoon-input" placeholder="Search Here">
+      <select id="spoon-dropdown">
+        <option>By Recipe</option>
+        <option>By Ingredient</option>
+        <option>By Nutrition</option>
+      </select>
+      <button type="submit" id="spoon-submit">Search</button>
+    </form>
+  </div>
+  <div id="card-container"></div>
+</main>
+  
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="./js/script.js"></script>
+</body>
 
-    <p class="menu-label">
-      Sidebar Testing
-    </p>
-    <ul class="menu-list">
-      <li><a href="#">Item 1</a></li>
-      <li><a href="#">Item 2</a></li>
-      <li><a href="#">Item 3</a></li>
-      <li><a href="#">Item 4</a></li>
-    </ul>
-
-    <main>
-      <section>
-        <!-- <article> JAVASCRIPT CREATE ELEMENT VIA USER INPUT?
-
-        </article> -->
-        <!-- <article> JAVASCRIPT CREATE ELEMENT VIA USER INPUT?
-
-        </article> -->
-        <!-- <article> JAVASCRIPT CREATE ELEMENT VIA USER INPUT?
-
-        </article> -->
-      </section>
-    </main>
-
-    <footer>
-      <!-- FOOTER CONTENT; SOCIAL MEDIA? LINKS? CONTACT? LOCATION? ETC -->
-    </footer>
-    <link rel="'stylesheet" href="./script/script.js" />
-  </body>
 </html>
