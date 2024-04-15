@@ -13,6 +13,7 @@ const recipeIngEl = document.getElementById(`recipe-ingredients`);
 const recipePicEl = document.getElementById(`recipe-picture`);
 const createdRecipesEl = document.getElementById(`recipe-buttons`);
 const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
+const recipeSumBoxEl = document.getElementById(`recipe-info-container`);
 
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if(recipeNames === null) {
@@ -64,11 +65,18 @@ function createButtons(data) {
   buttonInit();
 }
 
+//work on this
+function clearDisplay() {
+
+}
+
 function createRecipeInfo(data) {
   let rName = data.title;
   let rImage = data.image;
   let instructions = data.instructions;
-  // let info = data.summary;
+  let summary = data.summary;
+
+  // console.log(summary);
 
   for(let i = 0; i < data.extendedIngredients.length; i++) {
     let instEl = document.createElement(`p`);
@@ -78,9 +86,13 @@ function createRecipeInfo(data) {
 
   recipeNameEl.textContent = rName;
   recipePicEl.setAttribute(`src`, rImage);
+
+  let recipeInfo = document.createElement('p');
+  recipeInfo.innerHTML = summary;
+  recipeSumBoxEl.appendChild(recipeInfo);
   
   let infoEl = document.createElement(`p`);
-  infoEl.textContent = instructions;
+  infoEl.innerHTML = instructions;
   recipeInfoEl.appendChild(infoEl);
 }
 
