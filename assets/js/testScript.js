@@ -9,8 +9,10 @@ const inputEl = document.getElementById(`input-ingredient`);
 const formEl = document.getElementById(`search-form`);
 const recipeNameEl = document.getElementById(`recipe-name`);
 const recipeInfoEl = document.getElementById(`recipe-info`);
+const recipeIngEl = document.getElementById(`recipe-ingredients`);
 const recipePicEl = document.getElementById(`recipe-picture`);
 const createdRecipesEl = document.getElementById(`recipe-buttons`);
+const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
 
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if(recipeNames === null) {
@@ -43,53 +45,57 @@ formClose.addEventListener(`click`, function(event) {
 });
 
 function createButtons(data) {
-  for(let i = 0; i < data.length; i++) {
-    let name = data[i].title;
-    let listEl = document.createElement(`li`);
-    let buttonEl = document.createElement(`button`);
-    buttonEl.textContent = name;
-    listEl.appendChild(buttonEl);
-    createdRecipesEl.appendChild(listEl);
+  if(newSearch === 1) {
+    for(let i = 0; i < data.length; i++) {
+      let name = data[i].title;
+      let recipeId = data[i].id;
+      let listEl = document.createElement(`li`);
+      let buttonEl = document.createElement(`button`);
+      // buttonEl.setAttribute(`type`, `button`);
+      buttonEl.textContent = name;
+      buttonEl.setAttribute(`id`, recipeId);
+      buttonEl.classList = `created-buttons`;
+      listEl.appendChild(buttonEl);
+      createdRecipesEl.appendChild(listEl);
+    }
   }
+
+  //make buttons display info when clicked
+  buttonInit();
 }
 
 function createRecipeInfo(data) {
-  let rName = data[0].title;
-  let rImage = data[0].image;
-  let otherIng = [];
-  let nameIng = data[0].usedIngredients[0].original;
+  let rName = data.title;
+  let rImage = data.image;
+  let instructions = data.instructions;
+  // let info = data.summary;
 
-  for(let i = 0; i < data[0].missedIngredients.length; i++) {
-    otherIng.push(data[0].missedIngredients[i].original);
+  for(let i = 0; i < data.extendedIngredients.length; i++) {
+    let instEl = document.createElement(`p`);
+    instEl.textContent = data.extendedIngredients[i].original;
+    recipeIngEl.appendChild(instEl);
   }
-
-  // console.log(nameIng);
-  // console.log(otherIng);
 
   recipeNameEl.textContent = rName;
   recipePicEl.setAttribute(`src`, rImage);
   
-  let namedIng = document.createElement(`p`);
-  namedIng.textContent = nameIng
-  recipeInfoEl.appendChild(namedIng);
-
-  for(let j = 0; j < otherIng.length; j++) {
-    let missedIng = document.createElement(`p`);
-    missedIng.textContent = otherIng[j];
-    recipeInfoEl.appendChild(missedIng);
-  }
+  let infoEl = document.createElement(`p`);
+  infoEl.textContent = instructions;
+  recipeInfoEl.appendChild(infoEl);
 }
 
 
-function spoonAPICaller(url) {
+//api caller when form is submitted
+function spoonAPICallerInit(url) {
   fetch(url)
   .then(function(response) {
     if(response.ok) {
       response.json().then(function(data) {
-        console.log(data);
+        // console.log(data);
         //id:videoID gives youtube.com/watch?v=[videoID]
-        createRecipeInfo(data);
+        // createRecipeInfo(data);
         createButtons(data);
+
       });
     } else {
       alert(`Error: ${response.statusText}`);
@@ -100,7 +106,24 @@ function spoonAPICaller(url) {
   });
 }
 
-
+//api caller when button is clicked
+function spoonAPICallerButton(url) {
+  fetch(url)
+  .then(function(response) {
+    if(response.ok) {
+      response.json().then(function(data) {
+        console.log(data);
+        //id:videoID gives youtube.com/watch?v=[videoID]
+        createRecipeInfo(data);
+      });
+    } else {
+      alert(`Error: ${response.statusText}`);
+    }
+  })
+  .catch(function(error) {
+    alert(`Unable to connect to API`);
+  });
+}
 
 formEl.addEventListener(`submit`, function(event) {
   event.preventDefault();
@@ -114,12 +137,34 @@ formEl.addEventListener(`submit`, function(event) {
   } else {
     // console.log(inputEl.value);
     let spoonInput = inputEl.value;
+
+    newSearch = 1;
     
     let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
 
     closeModal();
     inputEl.value = ``;
 
-    spoonAPICaller(apiURL);
+    spoonAPICallerInit(apiURL);
   }
 });
+
+function buttonInit() {
+
+  for(let i = 0; i < createdButtonsEl.length; i++) {
+    createdButtonsEl[i].addEventListener(`click`, function(event) {
+      // console.log(`it works`);
+
+      let recipeId = createdButtonsEl[i].id;
+
+      let buttonIDAPI = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${spoonAPIKey}`;
+
+      spoonAPICallerButton(buttonIDAPI);
+
+      // console.log(recipeId);
+    
+    });
+  }
+  // console.log(createdButtonsEl.length);
+}
+
