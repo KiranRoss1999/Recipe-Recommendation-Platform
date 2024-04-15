@@ -10,6 +10,7 @@ const formEl = document.getElementById(`search-form`);
 const recipeNameEl = document.getElementById(`recipe-name`);
 const recipeInfoEl = document.getElementById(`recipe-info`);
 const recipePicEl = document.getElementById(`recipe-picture`);
+const createdRecipesEl = document.getElementById(`recipe-buttons`);
 
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if(recipeNames === null) {
@@ -41,15 +42,42 @@ formClose.addEventListener(`click`, function(event) {
   closeModal();
 });
 
+function createButtons(data) {
+  for(let i = 0; i < data.length; i++) {
+    let name = data[i].title;
+    let listEl = document.createElement(`li`);
+    let buttonEl = document.createElement(`button`);
+    buttonEl.textContent = name;
+    listEl.appendChild(buttonEl);
+    createdRecipesEl.appendChild(listEl);
+  }
+}
+
 function createRecipeInfo(data) {
   let rName = data[0].title;
   let rImage = data[0].image;
+  let otherIng = [];
+  let nameIng = data[0].usedIngredients[0].original;
 
-  // console.log(rName);
-  // console.log(rImage);
+  for(let i = 0; i < data[0].missedIngredients.length; i++) {
+    otherIng.push(data[0].missedIngredients[i].original);
+  }
+
+  // console.log(nameIng);
+  // console.log(otherIng);
 
   recipeNameEl.textContent = rName;
   recipePicEl.setAttribute(`src`, rImage);
+  
+  let namedIng = document.createElement(`p`);
+  namedIng.textContent = nameIng
+  recipeInfoEl.appendChild(namedIng);
+
+  for(let j = 0; j < otherIng.length; j++) {
+    let missedIng = document.createElement(`p`);
+    missedIng.textContent = otherIng[j];
+    recipeInfoEl.appendChild(missedIng);
+  }
 }
 
 
@@ -61,6 +89,7 @@ function spoonAPICaller(url) {
         console.log(data);
         //id:videoID gives youtube.com/watch?v=[videoID]
         createRecipeInfo(data);
+        createButtons(data);
       });
     } else {
       alert(`Error: ${response.statusText}`);
