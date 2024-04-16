@@ -134,7 +134,7 @@
       </div>
       <div class="box">
         <figure class="image is-16by9"></figure>
-        <iframe class="has-ratio" width="640" height="360" src="" frameborder="0" allowfullscreen id="yt-video"></iframe>
+        <iframe class="has-ratio" width="840" height="460" src="" frameborder="0" allowfullscreen id="yt-video"></iframe>
       </div>
     </div>
   </div>
@@ -164,6 +164,19 @@
     </div>
     <div class="modal-content">
       <form id="search-form">
+
+        <div class="field">
+          <label class="label has-text-primary">Options</label>
+          <div class="control">
+            <div class="select">
+              <select id="search-select">
+                <option>By Recipe Name</option>
+                <option>By Ingredient</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <div class="field">
           <label class="label has-text-primary">Recipe</label>
           <div class="control">
@@ -172,42 +185,10 @@
         </div>
         
         <div class="field">
-          <label class="label has-text-primary">PlaceHolder</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Text input">
-          </div>
-        </div>
-        
-        <div class="field">
-          <label class="label has-text-primary">Options</label>
-          <div class="control">
-            <div class="select">
-              <select>
-                <option>Select dropdown</option>
-                <option>With options</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        
-        <div class="field">
           <div class="control">
             <label class="checkbox">
               <input type="checkbox">
                 <span class="has-text-primary">Vegetarian</span>
-            </label>
-          </div>
-        </div>
-        
-        <div class="field">
-          <div class="control">
-            <label class="radio has-text-primary">
-              <input type="radio" name="question">
-              Yes
-            </label>
-            <label class="radio has-text-primary">
-              <input type="radio" name="question">
-              No
             </label>
           </div>
         </div>
