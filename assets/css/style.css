@@ -1,0 +1,99 @@
+:root {
+    --primary-color: #B5C18E;
+    --secondary-color: #F7DCB9;
+    --accent-color: #DEAC80;
+    --dark-color: #B99470;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color) !important;
+    padding: 10px 20px;
+}
+
+.navbar-item {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 30px;
+}
+
+.navbar-brand {
+    text-align: center;
+}
+
+.navbar-start {
+    text-align: center;
+    justify-content: center;
+}
+
+.navbar-dropdown {
+    background-color: white;
+}
+
+.navbar-dropdown .navbar-item {
+    color: rgb(255, 255, 255);
+}
+
+.navbar-dropdown .navbar-item.more-button {
+    color: white !important;
+}
+
+/* Hero section */
+.hero {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    text-align: center;
+}
+
+.container {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center its children horizontally */
+  }
+  
+  .hero-box {
+    background-color: white; /* Set background color to white */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    max-width: 800px; /* Limit the maximum width */
+    width: 100%; /* Make it take up the full width within the maximum width */
+    margin: 0 auto 20px; /* Center the element horizontally and add margin at the bottom */
+  }
+
+/* Main content */
+.box {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Button */
+.button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--dark-color);
+}
+
+.menu-label {
+    font-size: 1.25rem;
+  }
