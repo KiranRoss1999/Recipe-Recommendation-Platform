@@ -14,6 +14,7 @@ const recipePicEl = document.getElementById(`recipe-picture`);
 const createdRecipesEl = document.getElementById(`recipe-buttons`);
 const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
 const recipeSumBoxEl = document.getElementById(`recipe-info-container`);
+const ytVidEl = document.getElementById(`yt-video`);
 
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if(recipeNames === null) {
@@ -65,7 +66,6 @@ function createButtons(data) {
   buttonInit();
 }
 
-//work on this
 function clearDisplay() {
 
   // console.log(recipeIngEl.childNodes);
@@ -112,8 +112,21 @@ function createRecipeInfo(data) {
   let infoEl = document.createElement(`p`);
   infoEl.innerHTML = instructions;
   recipeInfoEl.appendChild(infoEl);
+
+  ytAPICaller(rName);
 }
 
+function embedVid(data) {
+
+  // let imgFrame = document.getElementById(`figure`);
+  let vidId = data.items[0].id.videoId;
+  // console.log(vidId);
+
+  let ytLink = `https://www.youtube.com/embed/` + vidId;
+  // console.log(ytLink);
+
+  ytVidEl.setAttribute(`src`, ytLink);
+}
 
 //api caller when form is submitted
 function spoonAPICallerInit(url) {
@@ -154,6 +167,31 @@ function spoonAPICallerButton(url) {
   .catch(function(error) {
     alert(`Unable to connect to API`);
   });
+}
+
+function ytAPICaller(data) {
+
+// let ytQuery = data + ` recipe`;
+let ytQuery = data;
+// console.log(ytQuery);
+
+let apiURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${ytQuery}&topicId=Food&key=${ytAPIKey}`;
+
+fetch(apiURL)
+.then(function(response) {
+  if(response.ok) {
+    response.json().then(function(data) {
+      console.log(data);
+      embedVid(data);
+    });
+  } else {
+    alert(`Error: ${response.statusText}`);
+  }
+})
+.catch(function(error) {
+  alert(`Unable to connect to API`);
+});
+
 }
 
 formEl.addEventListener(`submit`, function(event) {
