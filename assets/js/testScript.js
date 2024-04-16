@@ -68,6 +68,24 @@ function createButtons(data) {
 //work on this
 function clearDisplay() {
 
+  // console.log(recipeIngEl.childNodes);
+  let ingLength = recipeInfoEl.childNodes.length
+  for(let i = 0; i < ingLength; i++) {
+    recipeIngEl.childNodes[i].remove();
+  }
+
+  // console.log(recipeInfoEl.childNodes);
+  let infoLength = recipeInfoEl.childNodes.length;
+  for(let j = 0; j < infoLength; j++) {
+    recipeInfoEl.childNodes[j].remove();
+  }
+
+  // console.log(recipeSumBoxEl.childNodes);
+  let sumLength = recipeSumBoxEl.childNodes.length;
+  for(let k = 2; k < sumLength; k++) {
+    recipeSumBoxEl.childNodes[k].remove();
+  }
+
 }
 
 function createRecipeInfo(data) {
@@ -126,6 +144,7 @@ function spoonAPICallerButton(url) {
       response.json().then(function(data) {
         console.log(data);
         //id:videoID gives youtube.com/watch?v=[videoID]
+        clearDisplay();
         createRecipeInfo(data);
       });
     } else {
