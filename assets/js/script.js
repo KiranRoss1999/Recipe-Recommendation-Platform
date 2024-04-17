@@ -18,6 +18,9 @@ const addIngDivEl = document.getElementById(`ing-button-div`);
 const formInputsDivEl = document.getElementById(`form-inputs`);
 const isVegetarianEl = document.getElementById(`vegetarian-check`);
 
+//extra ingredients selectors
+const ingredientEl = document.getElementsByClassName(`input`);
+
 //recipe displays
 const recipeNameEl = document.getElementById(`recipe-name`);
 const recipeInfoEl = document.getElementById(`recipe-info`);
@@ -291,6 +294,19 @@ formEl.addEventListener(`submit`, function(event) {
     //calling api depending on selector
     if(selectEl.value === `By Ingredient`) {
       // console.log(`it matches ingredient`);
+
+      //checking if extra ingredients were added
+      if(ingredientEl.length > 1) {
+        for(let i = 1; i < ingredientEl.length; i++) {
+          // console.log(ingredientEl[i].value);
+          
+          let extraIng = `,+` + ingredientEl[i].value;
+          // console.log(extraIng);
+          spoonInput = spoonInput.concat(extraIng);
+          // console.log(newString);
+        }
+      }
+
       let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
       
       clearButtons();
@@ -346,7 +362,7 @@ function addInput() {
   input.setAttribute(`type`, `text`);
   input.setAttribute(`id`, inputId);
 
-  formInputsDivEl.appendChild(input);    
+  formInputsDivEl.appendChild(input);
 }
 
 //clear extra inputs on new search
@@ -365,6 +381,7 @@ function clearInputs() {
   // console.log(formInputsDivEl.childElementCount);
 }
 
+//adds extra inputs if user wants to add more ingredients
 addIngEl.addEventListener(`click`, function(event) {
 
   event.preventDefault();
@@ -383,7 +400,7 @@ addIngEl.addEventListener(`click`, function(event) {
 
 });
 
-
+//hiding buttons if irrelevent to selector
 selectEl.addEventListener(`change`, function(event) {
   if(selectEl.value === `By Recipe Name`) {
     vegetarianDivEl.classList.remove(`is-invisible`);
