@@ -14,6 +14,7 @@ const inputEl = document.getElementById(`input-ingredient`);
 const formEl = document.getElementById(`search-form`);
 const selectEl = document.getElementById(`search-select`);
 const addIngEl = document.getElementById(`add-ingredient-button`);
+const addIngDivEl = document.getElementById(`ing-button-div`);
 const formInputsDivEl = document.getElementById(`form-inputs`);
 const isVegetarianEl = document.getElementById(`vegetarian-check`);
 
@@ -53,15 +54,7 @@ function closeModal() {
 }
 
 function formElHiders() {
-  if(selectEl.value === `By Recipe Name`) {
-    vegetarianDivEl.classList.remove(`is-invisible`);
-    addIngEl.classList = `is-invisible`;
-  }
 
-  if(selectEl.value === `By Ingredient`) {
-    addIngEl.classList.remove(`is-invisible`);
-    vegetarianDivEl.classList = `is-invisible`;
-  }
 }
 
 //show modal on clicking right button
@@ -391,4 +384,14 @@ addIngEl.addEventListener(`click`, function(event) {
 });
 
 
-formElHiders();
+selectEl.addEventListener(`change`, function(event) {
+  if(selectEl.value === `By Recipe Name`) {
+    vegetarianDivEl.classList.remove(`is-invisible`);
+    addIngDivEl.classList = `is-invisible`;
+  }
+
+  if(selectEl.value === `By Ingredient`) {
+    addIngDivEl.classList.remove(`is-invisible`);
+    vegetarianDivEl.classList = `is-invisible`;
+  }
+})
