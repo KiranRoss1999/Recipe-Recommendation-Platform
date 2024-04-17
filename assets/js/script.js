@@ -32,9 +32,6 @@ const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
 const maxAdd = 2;
 let clicked = 0;
 
-//vegetarian checker
-let vegCheck = 0;
-
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if(recipeNames === null) {
   recipeNames = [];
@@ -59,6 +56,8 @@ modalButton.addEventListener(`click`, function(event) {
   // console.log(`it clicked`);
   openModal();
   clearInputs();
+
+  //reset extra ingredient count
   clicked = 0;
 });
 
@@ -283,34 +282,22 @@ formEl.addEventListener(`submit`, function(event) {
     // console.log(inputEl.value);
     let spoonInput = inputEl.value;
 
-    // console.log(selectEl.value);
-    if(isVegetarianEl.checked) {
-      // console.log(`its checked`);
-      vegCheck = 1;
-    } else {
-      vegCheck = 0;
-      // console.log(`its not checked`);
-    }
-
     //calling api depending on selector
     if(selectEl.value === `By Ingredient`) {
       // console.log(`it matches ingredient`);
-      if(vegCheck = 1) {
-        let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&include-tags=vegetarian&number=5&apiKey=${spoonAPIKey}`;
-        clearButtons();
-        spoonAPICallerIng(apiURL);
-      } else {
-        let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
-        clearButtons();
-        spoonAPICallerIng(apiURL);
-      }
+      let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
+      
+      clearButtons();
+      spoonAPICallerIng(apiURL);
       
     } else if(selectEl.value === `By Recipe Name`) {
       // console.log(`it matches recipe name`);
-      if(vegCheck = 1) {
-        let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&include-tags=vegetarian&number=5&apiKey=${spoonAPIKey}`;
+      if(isVegetarianEl.checked) {
+        let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&diet=vegetarian&number=5&apiKey=${spoonAPIKey}`;
         clearButtons();
         spoonAPiCallerRecipe(apiURL);
+        // console.log(`vegetarian checked`);
+        // console.log(apiURL);
       } else {
         let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
         clearButtons();
@@ -322,8 +309,6 @@ formEl.addEventListener(`submit`, function(event) {
     
     closeModal();
     inputEl.value = ``;
-
-
   }
 });
 
