@@ -14,6 +14,7 @@ const formEl = document.getElementById(`search-form`);
 const selectEl = document.getElementById(`search-select`);
 const addIngEl = document.getElementById(`add-ingredient-button`);
 const formInputsDivEl = document.getElementById(`form-inputs`);
+const isVegetarianEl = document.getElementById(`vegetarian-check`);
 
 //recipe displays
 const recipeNameEl = document.getElementById(`recipe-name`);
@@ -30,6 +31,9 @@ const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
 //amount of extra ingredients allowed to be added
 const maxAdd = 2;
 let clicked = 0;
+
+//vegetarian checker
+let vegCheck = 0;
 
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if(recipeNames === null) {
@@ -239,8 +243,6 @@ function spoonAPICallerButton(url) {
   });
 }
 
-//api caller for bottom carousel
-
 //api caller for youtube
 function ytAPICaller(data) {
 
@@ -282,22 +284,38 @@ formEl.addEventListener(`submit`, function(event) {
     let spoonInput = inputEl.value;
 
     // console.log(selectEl.value);
+    if(isVegetarianEl.checked) {
+      // console.log(`its checked`);
+      vegCheck = 1;
+    } else {
+      vegCheck = 0;
+      // console.log(`its not checked`);
+    }
 
     //calling api depending on selector
     if(selectEl.value === `By Ingredient`) {
       // console.log(`it matches ingredient`);
-      let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
+      if(vegCheck = 1) {
+        let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&include-tags=vegetarian&number=5&apiKey=${spoonAPIKey}`;
+        clearButtons();
+        spoonAPICallerIng(apiURL);
+      } else {
+        let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
+        clearButtons();
+        spoonAPICallerIng(apiURL);
+      }
       
-      clearButtons();
-      spoonAPICallerIng(apiURL);
-
     } else if(selectEl.value === `By Recipe Name`) {
       // console.log(`it matches recipe name`);
-      let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
-      
-      clearButtons();
-      spoonAPiCallerRecipe(apiURL);
-
+      if(vegCheck = 1) {
+        let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&include-tags=vegetarian&number=5&apiKey=${spoonAPIKey}`;
+        clearButtons();
+        spoonAPiCallerRecipe(apiURL);
+      } else {
+        let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
+        clearButtons();
+        spoonAPiCallerRecipe(apiURL);
+      }
     } else {
       console.log(`it doesnt match`);
     }
@@ -371,6 +389,5 @@ addIngEl.addEventListener(`click`, function(event) {
       console.log(`Max extra ingridients is 3`);
     }
   }
-
 
 });
