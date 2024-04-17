@@ -15,6 +15,8 @@ const createdRecipesEl = document.getElementById(`recipe-buttons`);
 const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
 const recipeSumBoxEl = document.getElementById(`recipe-info-container`);
 const ytVidEl = document.getElementById(`yt-video`);
+const modeBtn = document.querySelector('#mode-toggle');
+const bodyEl = document.querySelector('body');
 
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if(recipeNames === null) {
@@ -236,3 +238,26 @@ function buttonInit() {
   }
   // console.log(createdButtonsEl.length);
 }
+
+modeBtn.addEventListener('click', function() {
+  bodyEl.classList.toggle('inverted-colors');
+  const pageMode = bodyEl.classList.contains('inverted-colors') ? 'inverted' : 'normal';
+  localStorage.setItem('mode', pageMode);
+  if (bodyEl.classList.contains('inverted-colors')) {
+      bodyEl.style.backgroundColor = 'var(--dark0)';
+  } else {
+      bodyEl.style.backgroundColor = 'var(--primary-color)';
+  }
+  modeBtn.textContent = bodyEl.classList.contains('inverted-colors') ? '☀️' : '🌙';
+});
+
+function init() {
+  const pageMode = localStorage.getItem('mode');
+  if (pageMode === 'inverted') {
+      bodyEl.classList.add('inverted-colors');
+      bodyEl.style.backgroundColor = 'var(--dark0)';
+      modeBtn.textContent = '🌙';
+  }
+}
+
+init();

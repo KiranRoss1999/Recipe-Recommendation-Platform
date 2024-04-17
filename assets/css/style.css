@@ -3,18 +3,19 @@
     --secondary-color: #F7DCB9;
     --accent-color: #DEAC80;
     --dark-color: #B99470;
+    --dark0: #430346;
+    --dark1: #000000;
+    --dark2: #223949;
 }
 
-/* Global styles */
 body {
     font-family: Arial, sans-serif;
     background-color: var(--primary-color);
     color: var(--dark-color);
 }
 
-/* Navbar */
 .navbar {
-    background-color: var(--primary-color) !important;
+    background-color: var(--primary-color);
     padding: 10px 20px;
 }
 
@@ -45,7 +46,6 @@ body {
     color: white !important;
 }
 
-/* Hero section */
 .hero {
     background-color: var(--secondary-color);
     color: var(--dark-color);
@@ -53,34 +53,39 @@ body {
 }
 
 .container {
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center its children horizontally */
-  }
-  
-  .hero-box {
-    background-color: white; /* Set background color to white */
-    padding: 20px; /* Add padding for spacing */
-    border-radius: 10px; /* Add border radius for rounded corners */
-    max-width: 800px; /* Limit the maximum width */
-    width: 100%; /* Make it take up the full width within the maximum width */
-    margin: 0 auto 20px; /* Center the element horizontally and add margin at the bottom */
-  }
+    display: flex;
+    justify-content: center;
+}
 
-/* Main content */
+.hero-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto 20px;
+}
+
+.columns {
+    max-width: 99%;
+    max-height: 68%;
+}
+
 .box {
     background-color: white;
     padding: 10px;
     margin-bottom: 10px;
 }
 
-/* Footer */
 footer {
     background-color: var(--secondary-color);
     padding: 20px;
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-/* Button */
 .button {
     background-color: var(--accent-color);
     color: white;
@@ -96,4 +101,79 @@ footer {
 
 .menu-label {
     font-size: 1.25rem;
-  }
+}
+
+.inverted-colors *:not(img) {
+    background-color: black;
+    color: white;
+}
+
+.inverted-colors img {
+    filter: none;
+    mix-blend-mode: difference;
+}
+
+.navbar-item,
+.menu-list li a {
+    background-color: transparent;
+    color: black;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.spacer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inverted-colors .button {
+    background-color: white;
+    color: black !important;
+}
+
+#modal-button {
+    color: var(--dark1);
+}
+
+#recipe-info-container p {
+    color: black;
+}
+
+.inverted-colors body {
+    background-color: var(--dark0) !important;
+}
+
+.inverted-colors .navbar {
+    background-color: var(--dark0) !important;
+    color: white;
+}
+
+.inverted-colors .menu-list li a {
+    background-color: transparent;
+    color: white;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
