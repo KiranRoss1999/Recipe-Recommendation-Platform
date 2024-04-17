@@ -12,6 +12,8 @@ const formClose = document.getElementById(`close-form`);
 const inputEl = document.getElementById(`input-ingredient`);
 const formEl = document.getElementById(`search-form`);
 const selectEl = document.getElementById(`search-select`);
+const addIngEl = document.getElementById(`add-ingredient-button`);
+const formInputsDivEl = document.getElementById(`form-inputs`);
 
 //recipe displays
 const recipeNameEl = document.getElementById(`recipe-name`);
@@ -24,6 +26,10 @@ const ytVidEl = document.getElementById(`yt-video`);
 //created buttons
 const createdRecipesEl = document.getElementById(`recipe-buttons`);
 const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
+
+//amount of extra ingredients allowed to be added
+const maxAdd = 2;
+let clicked = 0;
 
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if(recipeNames === null) {
@@ -48,6 +54,8 @@ function closeModal() {
 modalButton.addEventListener(`click`, function(event) {
   // console.log(`it clicked`);
   openModal();
+  clearInputs();
+  clicked = 0;
 });
 
 //close modal on click the x icon
@@ -231,6 +239,8 @@ function spoonAPICallerButton(url) {
   });
 }
 
+//api caller for bottom carousel
+
 //api caller for youtube
 function ytAPICaller(data) {
 
@@ -267,6 +277,7 @@ formEl.addEventListener(`submit`, function(event) {
     closeModal();
     inputEl.value = ``;
   } else {
+    clicked = 0;
     // console.log(inputEl.value);
     let spoonInput = inputEl.value;
 
@@ -318,3 +329,44 @@ function buttonInit() {
   // console.log(createdButtonsEl.length);
 }
 
+//make extra inputs
+function addInput() {
+  let inputId = `input` + clicked;
+  let input = document.createElement(`input`);
+  input.classList = `input`;
+  input.setAttribute(`type`, `text`);
+  input.setAttribute(`id`, inputId);
+
+  formInputsDivEl.appendChild(input);    
+}
+
+//clear extra inputs on new search
+function clearInputs() {
+
+  if(formInputsDivEl.children[2]) {
+    // console.log(formInputsDivEl.children[2]);
+    formInputsDivEl.children[2].remove();
+  }
+
+  if(formInputsDivEl.children[1]) {
+    // console.log(formInputsDivEl.children[1]);
+    formInputsDivEl.children[1].remove();
+  }
+
+  // console.log(formInputsDivEl.childElementCount);
+}
+
+addIngEl.addEventListener(`click`, function(event) {
+
+  event.preventDefault();
+
+  // console.log(`button clicked`);
+
+  if(clicked < maxAdd) {
+    addInput();
+    clicked++;
+  } else {
+    console.log(`Max extra ingridients is 3`);
+  }
+
+});
