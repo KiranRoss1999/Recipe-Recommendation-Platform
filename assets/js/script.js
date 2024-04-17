@@ -146,6 +146,7 @@ function createRecipeInfo(data) {
     instEl.textContent = data.extendedIngredients[i].original;
     recipeIngEl.appendChild(instEl);
   }
+  recipeIngEl.classList = `box`;
 
   recipeNameEl.textContent = rName;
   recipePicEl.setAttribute(`src`, rImage);
@@ -153,10 +154,12 @@ function createRecipeInfo(data) {
   let recipeInfo = document.createElement('p');
   recipeInfo.innerHTML = summary;
   recipeSumBoxEl.appendChild(recipeInfo);
+  recipeSumBoxEl.classList = `box`;
   
   let infoEl = document.createElement(`p`);
   infoEl.innerHTML = instructions;
   recipeInfoEl.appendChild(infoEl);
+  recipeInfoEl.classList = `box`;
 
   ytAPICaller(rName);
 }
