@@ -119,20 +119,12 @@ function clearDisplay() {
 
 }
 
-//clearing buttons not working
+//clearing buttons when a new search is submitted
 function clearButtons() {
   // console.log(createdRecipesEl.childNodes);
   // console.log(createdRecipesEl.childNodes.length);
   // console.log(createdRecipesEl.children);
   // console.log(createdRecipesEl.children.length);
-
-  // let nodeLength = createdRecipesEl.childNodes.length;
-
-  // if(nodeLength > 1) {
-  //   for(let i = 0; i < nodeLength; i++) {
-  //     createdRecipesEl.firstElementChild.remove();
-  //   }
-  // }
 
   while(createdRecipesEl.firstChild) {
     createdRecipesEl.firstChild.remove();
@@ -284,14 +276,14 @@ formEl.addEventListener(`submit`, function(event) {
       // console.log(`it matches ingredient`);
       let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
       
-      // clearButtons();
+      clearButtons();
       spoonAPICallerIng(apiURL);
 
     } else if(selectEl.value === `By Recipe Name`) {
       // console.log(`it matches recipe name`);
       let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
       
-      // clearButtons();
+      clearButtons();
       spoonAPiCallerRecipe(apiURL);
 
     } else {
