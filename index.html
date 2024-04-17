@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
   <!-- Navbar -->
   <header>
@@ -61,25 +64,28 @@
 
   <!-- Main content -->
   <div class="columns box ml-3">
+
  <!-- side menu -->
-<div class="column is-one-fifth">
-  <aside class="menu has-text-centered">
-    <p class="menu-label is-size-4">Your Menu!</p> <!-- Adjust size here -->
-    <ul class="menu-list">
-      <li><a class="is-size-6 has-text-centered">Favourites</a></li> <!-- Adjust size here -->
-      <li><a class="is-size-6 has-text-centered">About Us</a></li> <!-- Adjust size here -->
-    </ul>
-    <p class="menu-label">Search</p>
-    <!-- search modal -->
-    <button class="button" id="modal-button">Start Cooking Here!</button>
-    <p class="menu-label"> Photo </p>
-    <ul class="menu-list" id="recipe-buttons">
-    </ul>
-  </aside>
-  <div class="box">
-    <img src="./assets/images/hero-background.jpg" alt="Description of the image">
-  </div>
-</div>
+    <div class="column is-one-fifth">
+      <aside class="menu has-text-centered">
+        <p class="menu-label is-size-4">Your Menu!</p> <!-- Adjust size here -->
+        <ul class="menu-list">
+          <li><a class="is-size-6 has-text-centered">Favourites</a></li> <!-- Adjust size here -->
+          <li><a class="is-size-6 has-text-centered">About Us</a></li> <!-- Adjust size here -->
+        </ul>
+        <p class="menu-label">Search</p>
+        <!-- search modal -->
+        <button class="button" id="modal-button">Start Cooking Here!</button>
+        <ul class="menu-list" id="recipe-buttons">
+        </ul>
+      </aside>
+
+      <p class="menu-label"> Photo </p>
+      <div class="box">
+      <img src="./assets/images/hero-background.jpg" alt="Description of the image">
+      </div>
+    </div>
+
     <!-- Recipe info -->
     <div class="column is-one-fifth">
       <div class="box" style="text-align: center;">
@@ -88,7 +94,8 @@
       <div class="box" id="recipe-ingredients"></div>
       <div class="box" id="recipe-info"></div>
     </div>
-    <!-- Recipe images and videos -->
+
+  <!-- Recipe images and videos -->
     <div class="column">
       <div class="box" id="recipe-info-container">
         <img id="recipe-picture">
@@ -98,6 +105,7 @@
         <iframe class="has-ratio" width="640" height="360" src="" frameborder="0" allowfullscreen id="yt-video"></iframe>
       </div>
     </div>
+
   </div>
 
   <!-- Modal -->
@@ -105,21 +113,29 @@
     <div class="modal-background"></div>
     <div class="modal-content">
       <form id="search-form">
+
+        <!-- select menu -->
         <div class="field">
-          <label class="label has-text-primary">Recipe</label>
+          <label class="label has-text-primary">Search Options</label>
+          <div class="control">
+            <div class="select">
+              <select id="search-select">
+                <option>By Recipe Name</option>
+                <option>By Ingredient</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- inuut field -->
+        <div class="field">
+          <label class="label has-text-primary">Search Here:</label>
           <div class="control">
             <input class="input" type="text" placeholder="What would you like to cook today?" id="input-ingredient">
           </div>
         </div>
-        <div class="field">
-          <label class="label has-text-primary">Ingredient</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Did you want to search by ingredient?">
-          </div>
-        </div>
-        <div class="field">
-          <label class="label has-text-primary">Options</label>
-        </div>
+
+        <!-- vegetarian check -->
         <div class="field">
           <div class="control">
             <label class="checkbox">
@@ -128,6 +144,8 @@
             </label>
           </div>
         </div>
+
+        <!-- submit/close buttons -->
         <div class="field is-grouped">
           <div class="control">
             <button class="button is-link">Submit</button>
@@ -136,6 +154,7 @@
             <button class="button is-link" id="close-form">Cancel</button>
           </div>
         </div>
+
       </form>
     </div>
     <button class="modal-close is-large" id="close-modal" aria-label="close"></button>
@@ -148,4 +167,5 @@
 
   <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
