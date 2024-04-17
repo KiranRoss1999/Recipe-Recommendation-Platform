@@ -7,6 +7,7 @@ const modalEl = document.getElementById(`search-modal`);
 const modalButton = document.getElementById(`modal-button`);
 const modalClose = document.getElementById(`close-modal`);
 const formClose = document.getElementById(`close-form`);
+const vegetarianDivEl = document.getElementById(`vegetarian-div`);
 
 //form stuff
 const inputEl = document.getElementById(`input-ingredient`);
@@ -49,6 +50,18 @@ function openModal() {
 //function closes modal
 function closeModal() {
   modalEl.classList.remove(`is-active`);
+}
+
+function formElHiders() {
+  if(selectEl.value === `By Recipe Name`) {
+    vegetarianDivEl.classList.remove(`is-invisible`);
+    addIngEl.classList = `is-invisible`;
+  }
+
+  if(selectEl.value === `By Ingredient`) {
+    addIngEl.classList.remove(`is-invisible`);
+    vegetarianDivEl.classList = `is-invisible`;
+  }
 }
 
 //show modal on clicking right button
@@ -376,3 +389,6 @@ addIngEl.addEventListener(`click`, function(event) {
   }
 
 });
+
+
+formElHiders();
