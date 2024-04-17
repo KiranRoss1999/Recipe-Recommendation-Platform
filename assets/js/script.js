@@ -361,12 +361,16 @@ addIngEl.addEventListener(`click`, function(event) {
   event.preventDefault();
 
   // console.log(`button clicked`);
+  if(selectEl.value === `By Ingredient`) {
+    // console.log(`its works`);
 
-  if(clicked < maxAdd) {
-    addInput();
-    clicked++;
-  } else {
-    console.log(`Max extra ingridients is 3`);
+    if(clicked < maxAdd) {
+      addInput();
+      clicked++;
+    } else {
+      console.log(`Max extra ingridients is 3`);
+    }
   }
+
 
 });
