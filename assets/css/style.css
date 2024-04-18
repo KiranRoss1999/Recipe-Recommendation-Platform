@@ -1,0 +1,274 @@
+:root {
+  --primary-color: #b5c18e;
+  --secondary-color: #f7dcb9;
+  --accent-color: #deac80;
+  --dark-color: #b99470;
+  --dark0: #430346;
+  --dark1: #000000;
+  --dark2: #223949;
+}
+
+.swiper-wrapper {
+  margin: auto;
+}
+
+.container-carousel {
+  max-width: 155rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.swiper-slide {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0px, 0px, 0px);
+}
+
+#trending {
+  margin: auto;
+}
+
+@media (max-width: 1440px) {
+  #trending {
+    padding: 7rem 0;
+  }
+}
+
+#trending .trending-slider {
+  padding: 2rem 0;
+  position: relative;
+}
+
+@media (max-width: 500px) {
+  #trending .trending-slider {
+    height: 45rem;
+  }
+}
+
+.trending-slide {
+  width: 37rem;
+  height: 42rem;
+  position: relative;
+}
+
+@media (max-width: 500px) {
+  .trending-slide {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+  .trending-slide .trending-slide-img {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+}
+
+.trending-slide .trending-slide-img img {
+  width: 30em;
+  height: 30em;
+  border-radius: 1rem;
+  object-fit: cover;
+  /* 
+  width: 37rem;
+  height: 42rem; */
+}
+
+/* .trending-slide .trending-slide-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+*/
+
+.trending-slide-content .trending-slide-content-bottom {
+  /*position: absolute;*/
+  bottom: 2rem;
+  left: 2rem;
+  color: var(--white);
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+#carousel-column {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  margin: auto;
+}
+
+/* BELOW IS KIRAN'S CODE, ABOVE IS FOR CAROUSEL */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  height: auto;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+}
+
+.navbar-item {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-right: 30px;
+}
+
+.navbar-brand {
+  text-align: center;
+}
+
+.navbar-start {
+  text-align: center;
+  justify-content: center;
+}
+
+.navbar-dropdown {
+  background-color: white;
+}
+
+.navbar-dropdown .navbar-item {
+  color: rgb(255, 255, 255);
+}
+
+.navbar-dropdown .navbar-item.more-button {
+  color: white !important;
+}
+
+.hero {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
+.columns {
+  max-width: 99%;
+  max-height: 68%;
+}
+
+.box {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  text-align: center;
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+}
+
+.button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--dark-color);
+}
+
+.menu-label {
+  font-size: 1.25rem;
+}
+
+.inverted-colors *:not(img) {
+  background-color: black;
+  color: white;
+}
+
+.inverted-colors img {
+  filter: none;
+  mix-blend-mode: difference;
+}
+
+.navbar-item,
+.menu-list li a {
+  background-color: transparent;
+  color: black;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.button {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.spacer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.inverted-colors .button {
+  background-color: white;
+  color: black !important;
+}
+
+#modal-button {
+  color: var(--dark1);
+}
+
+#recipe-info-container p {
+  color: black;
+}
+
+.inverted-colors body {
+  background-color: var(--dark0) !important;
+}
+
+.inverted-colors .navbar {
+  background-color: var(--dark0) !important;
+  color: white;
+}
+
+.inverted-colors .menu-list li a {
+  background-color: transparent;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: auto;
+}
