@@ -1,6 +1,7 @@
 const ytAPIKey = 'AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ';
-const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
+// const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
 // const spoonAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
+const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
 
 //modal stuff
 const modalEl = document.getElementById(`search-modal`);
@@ -45,6 +46,7 @@ let displayedRecipe = {
   name: ``,
 };
 
+//grabbing and stored data
 let savedRecipes = JSON.parse(localStorage.getItem(`recipes`));
 if(savedRecipes === null) {
   savedRecipes = [];
@@ -393,10 +395,22 @@ function clearInputs() {
 //storing recipe id to local storage if favourited
 function favouriteRecipe() {
 
-  savedRecipes.push(displayedRecipe);
+  let matched = 0;
+  
+  for(let i = 0; i <savedRecipes.length; i++) {
+    if(savedRecipes[i].id = displayedRecipe.id) {
+      matched = 1;
+    }
+  }
 
-  localStorage.setItem(`recipes`, JSON.stringify(savedRecipes));
-}
+  if(matched === 0) {
+    savedRecipes.push(displayedRecipe);
+
+    localStorage.setItem(`recipes`, JSON.stringify(savedRecipes));
+  } else {
+    console.log(`Recipe already saved.`);
+  }
+} 
 
 //displaying favourited recipes
 function displayFavouritesOnStartup() {
@@ -409,8 +423,13 @@ function displayFavouritesOnStartup() {
     favButtonEl.setAttribute(`id`, savedRecipes[i].id);
     favButtonEl.textContent = savedRecipes[i].name;
 
+    // let deleteButtonEl = document.createElement(`button`);
+    // deleteButtonEl.textContent = `X`;
+    // deleteButtonEl.classList = `button`;
+
     let favLiEl = document.createElement(`li`);
     favLiEl.appendChild(favButtonEl);
+    // favLiEl.appendChild(deleteButtonEl);
     favDivEl.appendChild(favLiEl);
   }
 }
@@ -457,3 +476,57 @@ favButtonEl.addEventListener(`click`, function(event) {
 });
 
 displayFavouritesOnStartup();
+
+//carousel js
+
+const mitraAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
+
+function displayRecommended() {
+  let randomAPI = `https://api.spoonacular.com/recipes/random?number=15&apiKey=${mitraAPIKey}`;
+
+  fetch(randomAPI)
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Network response was not ok.");
+      }
+    })
+    .then(function (data) {
+      console.log(data);
+      carouselData(data);
+    })
+    .catch(function (error) {
+      console.log(
+        "There was a problem with the fetch operation: ",
+        error.message
+      );
+    });
+}
+
+function carouselData(data) {
+  const imgEl = document.getElementsByClassName("imgs");
+  console.log(imgEl);
+
+  for (let i = 0; i < data.recipes.length; i++) {
+    const imageUrl = data.recipes[i].image;
+
+    imgEl[i].setAttribute("src", imageUrl);
+  }
+}
+
+const TrandingSlider = new Swiper(".trending-slider", {
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  loop: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 2.5,
+  },
+});
+
+displayRecommended();
