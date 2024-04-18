@@ -1,8 +1,8 @@
 // const ytAPIKey = 'AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ';
 const ytAPIKey = `AIzaSyAhL1f6J1duzQ2_oWLaCw5ciRIbMBzKr0k`;
 // const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
-// const spoonAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
-const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
+// const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
+const spoonAPIKey = `dc0bf729c1574eea929baf3fa523b239`;
 
 //modal stuff
 const modalEl = document.getElementById(`search-modal`);
@@ -131,15 +131,21 @@ function createButtonsRecipe(data) {
 function clearDisplay() {
 
   // console.log(recipeIngEl.childNodes);
-  let ingLength = recipeInfoEl.childNodes.length
-  for(let i = 0; i < ingLength; i++) {
-    recipeIngEl.childNodes[i].remove();
+  // let ingLength = recipeInfoEl.childNodes.length
+  // for(let i = 0; i < ingLength; i++) {
+  //   recipeIngEl.childNodes[i].remove();
+  // }
+  while(recipeIngEl.firstChild) {
+    recipeIngEl.firstChild.remove();
   }
 
   // console.log(recipeInfoEl.childNodes);
-  let infoLength = recipeInfoEl.childNodes.length;
-  for(let j = 0; j < infoLength; j++) {
-    recipeInfoEl.childNodes[j].remove();
+  // let infoLength = recipeInfoEl.childNodes.length;
+  // for(let j = 0; j < infoLength; j++) {
+  //   recipeInfoEl.childNodes[j].remove();
+  // }
+  while(recipeInfoEl.firstChild) {
+    recipeInfoEl.firstChild.remove();
   }
 
   // console.log(recipeSumBoxEl.childNodes);
@@ -253,7 +259,7 @@ function spoonAPICallerButton(url) {
     if(response.ok) {
       response.json().then(function(data) {
         // console.log(data);
-        clearDisplay();
+        // clearDisplay();
         createRecipeInfo(data);
         // console.log(displayedRecipe);
       });
@@ -352,6 +358,8 @@ formEl.addEventListener(`submit`, function(event) {
 //function for when created buttons are clicked
 function buttonInit() {
 
+  console.log(createdButtonsEl);
+
   for(let i = 0; i < createdButtonsEl.length; i++) {
     createdButtonsEl[i].addEventListener(`click`, function(event) {
       // console.log(`it works`);
@@ -360,6 +368,7 @@ function buttonInit() {
 
       let buttonIDAPI = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${spoonAPIKey}`;
 
+      clearDisplay();
       spoonAPICallerButton(buttonIDAPI);
 
       // console.log(recipeId);
@@ -419,6 +428,8 @@ function favouriteRecipe() {
     let favLiEl = document.createElement(`li`);
     favLiEl.appendChild(favButtonEl);
     favDivEl.appendChild(favLiEl);
+
+    buttonInit();
   } else {
     console.log(`Recipe already saved.`);
     matched = 0;
@@ -445,6 +456,8 @@ function displayFavouritesOnStartup() {
     // favLiEl.appendChild(deleteButtonEl);
     favDivEl.appendChild(favLiEl);
   }
+
+  buttonInit();
 }
 
 //adds extra inputs if user wants to add more ingredients
@@ -545,7 +558,7 @@ const TrandingSlider = new Swiper(".trending-slider", {
   },
 });
 
-displayRecommended();
+// displayRecommended();
 
 //dark mode toggle
 
