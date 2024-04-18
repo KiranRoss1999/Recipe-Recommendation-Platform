@@ -1,3 +1,55 @@
+const mitraAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
+
+function displayRecommended() {
+  let randomAPI = `https://api.spoonacular.com/recipes/random?number=15&apiKey=${mitraAPIKey}`;
+
+  fetch(randomAPI)
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Network response was not ok.");
+      }
+    })
+    .then(function (data) {
+      console.log(data);
+      carouselData(data);
+    })
+    .catch(function (error) {
+      console.log(
+        "There was a problem with the fetch operation: ",
+        error.message
+      );
+    });
+}
+
+function carouselData(data) {
+  const imgEl = document.getElementsByClassName("imgs");
+  console.log(imgEl);
+
+  for (let i = 0; i < data.recipes.length; i++) {
+    const imageUrl = data.recipes[i].image;
+
+    imgEl[i].setAttribute("src", imageUrl);
+  }
+}
+
+const TrandingSlider = new Swiper(".trending-slider", {
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  loop: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 2.5,
+  },
+});
+
+displayRecommended();
+
 const ytAPIKey = "AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ";
 const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
 
@@ -14,6 +66,9 @@ const recipePicEl = document.getElementById(`recipe-picture`);
 const createdRecipesEl = document.getElementById(`recipe-buttons`);
 const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
 const recipeSumBoxEl = document.getElementById(`recipe-info-container`);
+const ytVidEl = document.getElementById(`yt-video`);
+const modeBtn = document.querySelector("#mode-toggle");
+const bodyEl = document.querySelector("body");
 
 let recipeNames = JSON.parse(localStorage.getItem(`recipes`));
 if (recipeNames === null) {
@@ -65,8 +120,25 @@ function createButtons(data) {
   buttonInit();
 }
 
-//work on this
-function clearDisplay() {}
+function clearDisplay() {
+  // console.log(recipeIngEl.childNodes);
+  let ingLength = recipeInfoEl.childNodes.length;
+  for (let i = 0; i < ingLength; i++) {
+    recipeIngEl.childNodes[i].remove();
+  }
+
+  // console.log(recipeInfoEl.childNodes);
+  let infoLength = recipeInfoEl.childNodes.length;
+  for (let j = 0; j < infoLength; j++) {
+    recipeInfoEl.childNodes[j].remove();
+  }
+
+  // console.log(recipeSumBoxEl.childNodes);
+  let sumLength = recipeSumBoxEl.childNodes.length;
+  for (let k = 2; k < sumLength; k++) {
+    recipeSumBoxEl.childNodes[k].remove();
+  }
+}
 
 function createRecipeInfo(data) {
   let rName = data.title;
@@ -92,6 +164,19 @@ function createRecipeInfo(data) {
   let infoEl = document.createElement(`p`);
   infoEl.innerHTML = instructions;
   recipeInfoEl.appendChild(infoEl);
+
+  ytAPICaller(rName);
+}
+
+function embedVid(data) {
+  // let imgFrame = document.getElementById(`figure`);
+  let vidId = data.items[0].id.videoId;
+  // console.log(vidId);
+
+  let ytLink = `https://www.youtube.com/embed/` + vidId;
+  // console.log(ytLink);
+
+  ytVidEl.setAttribute(`src`, ytLink);
 }
 
 //api caller when form is submitted
@@ -122,7 +207,31 @@ function spoonAPICallerButton(url) {
         response.json().then(function (data) {
           console.log(data);
           //id:videoID gives youtube.com/watch?v=[videoID]
+          clearDisplay();
           createRecipeInfo(data);
+        });
+      } else {
+        alert(`Error: ${response.statusText}`);
+      }
+    })
+    .catch(function (error) {
+      alert(`Unable to connect to API`);
+    });
+}
+
+function ytAPICaller(data) {
+  // let ytQuery = data + ` recipe`;
+  let ytQuery = data;
+  // console.log(ytQuery);
+
+  let apiURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${ytQuery}&topicId=Food&key=${ytAPIKey}`;
+
+  fetch(apiURL)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          embedVid(data);
         });
       } else {
         alert(`Error: ${response.statusText}`);
@@ -174,39 +283,29 @@ function buttonInit() {
   // console.log(createdButtonsEl.length);
 }
 
-// CREATE SUBMIT FILTER OPTION FUNCTION
-// TEXTBOX FOR FOOD NAME
-// DROPDOWN FOR FILTER
-
-bulmaCarousel.attach("#slider", {
-  slidesToScroll: 1,
-  slidesToShow: 1,
-  infinite: true,
-  autoplay: true,
+modeBtn.addEventListener("click", function () {
+  bodyEl.classList.toggle("inverted-colors");
+  const pageMode = bodyEl.classList.contains("inverted-colors")
+    ? "inverted"
+    : "normal";
+  localStorage.setItem("mode", pageMode);
+  if (bodyEl.classList.contains("inverted-colors")) {
+    bodyEl.style.backgroundColor = "var(--dark0)";
+  } else {
+    bodyEl.style.backgroundColor = "var(--primary-color)";
+  }
+  modeBtn.textContent = bodyEl.classList.contains("inverted-colors")
+    ? "☀️"
+    : "🌙";
 });
 
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides((slideIndex += n));
-}
-
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("item-slide");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+function init() {
+  const pageMode = localStorage.getItem("mode");
+  if (pageMode === "inverted") {
+    bodyEl.classList.add("inverted-colors");
+    bodyEl.style.backgroundColor = "var(--dark0)";
+    modeBtn.textContent = "🌙";
   }
 }
+
+init();
