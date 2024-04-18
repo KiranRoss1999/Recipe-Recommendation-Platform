@@ -4,36 +4,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>🍴 CookTube 🍴</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
     />
-    <!-- LINK TO BULMA LIBRARY FOR CAROUSEL -->
+    <!-- PACKAGE LINKS FOR CAROUSEL  -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body>
-    <!-- navbar -->
+    <!-- Navbar -->
     <header>
-      <div class="box has-background-primary-light">
-        <!-- <h1>Website Name</h1> -->
-        <nav
-          class="navbar has-background-primary-light"
-          role="navigation"
-          aria-label="main navigation"
-        >
+      <div class="box">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
-            <a class="navbar-item"> Title </a>
-
             <a
               role="button"
               class="navbar-burger"
@@ -47,34 +40,30 @@
               <span aria-hidden="true"></span>
             </a>
           </div>
-
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-              <a class="navbar-item"> Home </a>
-
-              <a class="navbar-item"> PlaceHolder </a>
-
+              <a class="navbar-item">Home</a>
+              <a class="navbar-item">My Pantry 🍳</a>
               <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link"> More </a>
-
+                <a class="navbar-link">More</a>
                 <div class="navbar-dropdown">
-                  <a class="navbar-item"> About </a>
-                  <a class="navbar-item is-selected"> PlaceHolder </a>
-                  <a class="navbar-item"> Contact </a>
+                  <a class="navbar-item">About</a>
+                  <a class="navbar-item is-selected">About</a>
+                  <a class="navbar-item">Contact</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item"> Report an issue </a>
+                  <a class="navbar-item more-button">Report an issue</a>
                 </div>
               </div>
             </div>
-
-            <!-- maybe dont need these -->
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">
-                  <a class="button is-primary">
-                    <strong>Some Button</strong>
-                  </a>
-                  <a class="button is-light"> Some Other Button </a>
+                  <a class="button is-primary github-button"
+                    ><strong>GitHub</strong></a
+                  >
+                  <a id="mode-toggle" class="button is-light"
+                    ><strong>🌙</strong></a
+                  >
                 </div>
               </div>
             </div>
@@ -83,240 +72,184 @@
       </div>
     </header>
 
-    <!-- hero section -->
-    <section class="hero box has-background-link-light">
-      <div class="hero-body">
-        <p class="title">Hero title</p>
-        <p class="subtitle">Hero subtitle</p>
+    <!-- Hero section -->
+    <section class="hero-box">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column">
+            <p class="title is-size-1-desktop is-size-2-mobile">
+              🍴 CookTube 🍴
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- main content -->
+    <!-- Main content -->
     <div class="columns box ml-3">
       <!-- side menu -->
       <div class="column is-one-fifth">
-        <aside class="menu">
-          <p class="menu-label">Main Menu #1</p>
+        <aside class="menu has-text-centered">
+          <p class="menu-label is-size-4">Your Menu!</p>
+          <!-- Adjust size here -->
           <ul class="menu-list">
-            <li><a>PlaceHolder</a></li>
-            <li><a>PlaceHolder</a></li>
+            <li><a class="is-size-6 has-text-centered">Favourites</a></li>
+            <!-- Adjust size here -->
+            <li><a class="is-size-6 has-text-centered">About Us</a></li>
+            <!-- Adjust size here -->
           </ul>
           <p class="menu-label">Search</p>
           <!-- search modal -->
-          <button class="button" id="modal-button">Search</button>
-          <p class="menu-label">Main Menu #3</p>
+          <button class="button" id="modal-button">Start Cooking!</button>
+          <div class="spacer">
+            <p>Your requested recipes will show here:</p>
+          </div>
           <ul class="menu-list" id="recipe-buttons"></ul>
         </aside>
-
-        <div class="box">
-          <img />
-          <p>something maybe</p>
-        </div>
       </div>
 
-      <!-- recipe info -->
+      <!-- Recipe info -->
       <div class="column is-one-fifth">
-        <div class="box">
-          <h3 id="recipe-name">Recipe</h3>
+        <div style="text-align: center">
+          <h3 id="recipe-name"></h3>
         </div>
-        <div class="box" id="recipe-ingredients"></div>
-        <div class="box" id="recipe-info"></div>
+        <div id="recipe-ingredients"></div>
+        <div id="recipe-info"></div>
       </div>
 
-      <!-- recipe images and vids -->
+      <!-- Recipe images and videos -->
       <div class="column">
-        <div class="box" id="recipe-info-container">
+        <div id="recipe-info-container">
           <img id="recipe-picture" />
         </div>
-        <div class="box">
-          <img />
-          <p>img or something</p>
+        <div>
+          <figure class="image is-16by9"></figure>
+          <iframe
+            class="has-ratio"
+            width="640"
+            height="360"
+            src=""
+            frameborder="0"
+            allowfullscreen
+            id="yt-video"
+          ></iframe>
         </div>
       </div>
     </div>
 
-    <!-- bottom content -->
-    <!-- <div class="box">
-      <h3 class="has-text-centered">Random Stuff</h3>
-      <div class="is-flex is-justify-content-space-evenly">
-        <div class="box">
-          <img />
-          <p>Pic #1</p>
+    <div id="carousel-column" class="columns">
+      <section id="trending">
+        <div class="container-carousel">
+          <div class="swiper trending-slider">
+            <div class="swiper-wrapper">
+              <!-- Slide-start -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="box">
-          <img />
-          <p>Pic #2</p>
-        </div>
-        <div class="box">
-          <img />
-          <p>Pic #3</p>
-        </div>
+      </section>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="search-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <form id="search-form">
+          <!-- select menu -->
+          <div class="field">
+            <label class="label has-text-primary">Search Options</label>
+            <div class="control">
+              <div class="select">
+                <select id="search-select">
+                  <option>By Recipe Name</option>
+                  <option>By Ingredient</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- inuut field -->
+          <div class="field">
+            <label class="label has-text-primary">Search Here:</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="What would you like to cook today?"
+                id="input-ingredient"
+              />
+            </div>
+          </div>
+
+          <!-- vegetarian check -->
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox" />
+                <span class="has-text-primary">Vegetarian</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- submit/close buttons -->
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link">Submit</button>
+            </div>
+            <div class="control">
+              <button class="button is-link" id="close-form">Cancel</button>
+            </div>
+          </div>
+        </form>
       </div>
-    </div> -->
+      <button
+        class="modal-close is-large"
+        id="close-modal"
+        aria-label="close"
+      ></button>
+    </div>
 
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bulma Slider</title>
-        <link rel="stylesheet" href="style.css" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"
-        />
-      </head>
+    <!-- Footer -->
+    <footer>
+      <h3 class="ml-5">Some Footer</h3>
+    </footer>
 
-      <body>
-        <section class="carousel">
-          <div id="slider">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1200x500"
-                    alt=""
-                  />
-                </figure>
-              </div>
-              <div class="card-content slider-text">
-                <div class="is-size-5 box">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Accusantium cum blanditiis dolore aperiam reiciendis minima
-                  doloremque recusandae atque illum. Dolorum impedit aut facere,
-                  porro minus quia dignissimos minima. Iure, magni?
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1200x500"
-                    alt=""
-                  />
-                </figure>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque facere inventore voluptate ad, ipsam, esse asperiores
-                  distinctio ipsum reprehenderit nostrum veniam debitis
-                  perferendis vero repellat earum commodi quaerat qui excepturi.
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <p class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1300x500"
-                    alt=""
-                  />
-                </p>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Ipsam magni sint exercitationem libero nesciunt quo saepe,
-                  voluptates eaque. Iure itaque quam facere sit praesentium
-                  minus deserunt tenetur nemo assumenda asperiores?
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+    <!-- THE DOCUMENTATION PACKAGE FROM SWIPER FOR THE FUNCTIONS -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
 
-        <!-- modal  -->
-        <div class="modal" id="search-modal">
-          <div class="modal-background"></div>
-          <div class="modal-content">
-            <form id="search-form">
-              <div class="field">
-                <label class="label has-text-primary">Recipe</label>
-                <div class="control">
-                  <input
-                    class="input"
-                    type="text"
-                    placeholder="Text input"
-                    id="input-ingredient"
-                  />
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label has-text-primary">PlaceHolder</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Text input" />
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label has-text-primary">Options</label>
-                <div class="control">
-                  <div class="select">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="field">
-                <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox" />
-                    <span class="has-text-primary">Vegetarian</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="field">
-                <div class="control">
-                  <label class="radio has-text-primary">
-                    <input type="radio" name="question" />
-                    Yes
-                  </label>
-                  <label class="radio has-text-primary">
-                    <input type="radio" name="question" />
-                    No
-                  </label>
-                </div>
-              </div>
-
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button is-link">Submit</button>
-                </div>
-                <div class="control">
-                  <button class="button is-link is-light" id="close-form">
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <button
-            class="modal-close is-large"
-            id="close-modal"
-            aria-label="close"
-          ></button>
-        </div>
-
-        <footer>
-          <h3 class="ml-5">Some Footer</h3>
-        </footer>
-
-        <!-- BULMA CAROUSEL JS LIBRARY -->
-        <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
-        <script src="./assets/js/script.js"></script>
-      </body>
-    </html>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
