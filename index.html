@@ -1,57 +1,322 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
-    <title>Recipe Reccomendation Platform</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-<<<<<<< HEAD
+    <title>Document</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
     />
-=======
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
->>>>>>> 6c8fda0e05f133407c2e98abc5871389d18da37c
+    <!-- LINK TO BULMA LIBRARY FOR CAROUSEL -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body>
-
+    <!-- navbar -->
     <header>
-      <!-- CONTENT OF FILTERS? RECIPE OPTIONS?? TO DISCUSS -->
+      <div class="box has-background-primary-light">
+        <!-- <h1>Website Name</h1> -->
+        <nav
+          class="navbar has-background-primary-light"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div class="navbar-brand">
+            <a class="navbar-item"> Title </a>
+
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item"> Home </a>
+
+              <a class="navbar-item"> PlaceHolder </a>
+
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"> More </a>
+
+                <div class="navbar-dropdown">
+                  <a class="navbar-item"> About </a>
+                  <a class="navbar-item is-selected"> PlaceHolder </a>
+                  <a class="navbar-item"> Contact </a>
+                  <hr class="navbar-divider" />
+                  <a class="navbar-item"> Report an issue </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- maybe dont need these -->
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-primary">
+                    <strong>Some Button</strong>
+                  </a>
+                  <a class="button is-light"> Some Other Button </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
     </header>
 
-    <div>
-      <!-- BACKDROP OF HERO IMAGE -->
+    <!-- hero section -->
+    <section class="hero box has-background-link-light">
+      <div class="hero-body">
+        <p class="title">Hero title</p>
+        <p class="subtitle">Hero subtitle</p>
+      </div>
+    </section>
+
+    <!-- main content -->
+    <div class="columns box ml-3">
+      <!-- side menu -->
+      <div class="column is-one-fifth">
+        <aside class="menu">
+          <p class="menu-label">Main Menu #1</p>
+          <ul class="menu-list">
+            <li><a>PlaceHolder</a></li>
+            <li><a>PlaceHolder</a></li>
+          </ul>
+          <p class="menu-label">Search</p>
+          <!-- search modal -->
+          <button class="button" id="modal-button">Search</button>
+          <p class="menu-label">Main Menu #3</p>
+          <ul class="menu-list" id="recipe-buttons"></ul>
+        </aside>
+
+        <div class="box">
+          <img />
+          <p>something maybe</p>
+        </div>
+      </div>
+
+      <!-- recipe info -->
+      <div class="column is-one-fifth">
+        <div class="box">
+          <h3 id="recipe-name">Recipe</h3>
+        </div>
+        <div class="box" id="recipe-ingredients"></div>
+        <div class="box" id="recipe-info"></div>
+      </div>
+
+      <!-- recipe images and vids -->
+      <div class="column">
+        <div class="box" id="recipe-info-container">
+          <img id="recipe-picture" />
+        </div>
+        <div class="box">
+          <img />
+          <p>img or something</p>
+        </div>
+      </div>
     </div>
 
-    <p class="menu-label">
-      Sidebar Testing
-    </p>
-    <ul class="menu-list">
-      <li><a href="#">Item 1</a></li>
-      <li><a href="#">Item 2</a></li>
-      <li><a href="#">Item 3</a></li>
-      <li><a href="#">Item 4</a></li>
-    </ul>
+    <!-- bottom content -->
+    <!-- <div class="box">
+      <h3 class="has-text-centered">Random Stuff</h3>
+      <div class="is-flex is-justify-content-space-evenly">
+        <div class="box">
+          <img />
+          <p>Pic #1</p>
+        </div>
+        <div class="box">
+          <img />
+          <p>Pic #2</p>
+        </div>
+        <div class="box">
+          <img />
+          <p>Pic #3</p>
+        </div>
+      </div>
+    </div> -->
 
-    <main>
-      <section>
-        <!-- <article> JAVASCRIPT CREATE ELEMENT VIA USER INPUT?
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bulma Slider</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"
+        />
+      </head>
 
-        </article> -->
-        <!-- <article> JAVASCRIPT CREATE ELEMENT VIA USER INPUT?
+      <body>
+        <section class="carousel">
+          <div id="slider">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-16by9 is-covered">
+                  <img
+                    src="https://source.unsplash.com/random/1200x500"
+                    alt=""
+                  />
+                </figure>
+              </div>
+              <div class="card-content slider-text">
+                <div class="is-size-5 box">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Accusantium cum blanditiis dolore aperiam reiciendis minima
+                  doloremque recusandae atque illum. Dolorum impedit aut facere,
+                  porro minus quia dignissimos minima. Iure, magni?
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-16by9 is-covered">
+                  <img
+                    src="https://source.unsplash.com/random/1200x500"
+                    alt=""
+                  />
+                </figure>
+              </div>
+              <div class="card-content slider-text">
+                <p class="is-size-5 box">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque facere inventore voluptate ad, ipsam, esse asperiores
+                  distinctio ipsum reprehenderit nostrum veniam debitis
+                  perferendis vero repellat earum commodi quaerat qui excepturi.
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <p class="image is-16by9 is-covered">
+                  <img
+                    src="https://source.unsplash.com/random/1300x500"
+                    alt=""
+                  />
+                </p>
+              </div>
+              <div class="card-content slider-text">
+                <p class="is-size-5 box">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Ipsam magni sint exercitationem libero nesciunt quo saepe,
+                  voluptates eaque. Iure itaque quam facere sit praesentium
+                  minus deserunt tenetur nemo assumenda asperiores?
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        </article> -->
-        <!-- <article> JAVASCRIPT CREATE ELEMENT VIA USER INPUT?
+        <!-- modal  -->
+        <div class="modal" id="search-modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <form id="search-form">
+              <div class="field">
+                <label class="label has-text-primary">Recipe</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Text input"
+                    id="input-ingredient"
+                  />
+                </div>
+              </div>
 
-        </article> -->
-      </section>
-    </main>
+              <div class="field">
+                <label class="label has-text-primary">PlaceHolder</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Text input" />
+                </div>
+              </div>
 
-    <footer>
-      <!-- FOOTER CONTENT; SOCIAL MEDIA? LINKS? CONTACT? LOCATION? ETC -->
-    </footer>
-    <link rel="'stylesheet" href="./script/script.js" />
+              <div class="field">
+                <label class="label has-text-primary">Options</label>
+                <div class="control">
+                  <div class="select">
+                    <select>
+                      <option>Select dropdown</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox" />
+                    <span class="has-text-primary">Vegetarian</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <label class="radio has-text-primary">
+                    <input type="radio" name="question" />
+                    Yes
+                  </label>
+                  <label class="radio has-text-primary">
+                    <input type="radio" name="question" />
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" id="close-form">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <button
+            class="modal-close is-large"
+            id="close-modal"
+            aria-label="close"
+          ></button>
+        </div>
+
+        <footer>
+          <h3 class="ml-5">Some Footer</h3>
+        </footer>
+
+        <!-- BULMA CAROUSEL JS LIBRARY -->
+        <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+        <script src="./assets/js/script.js"></script>
+      </body>
+    </html>
   </body>
 </html>
