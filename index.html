@@ -70,9 +70,12 @@
       <aside class="menu has-text-centered">
         <p class="menu-label is-size-4">Your Menu!</p> <!-- Adjust size here -->
         <ul class="menu-list">
-          <li><a class="is-size-6 has-text-centered">Favourites</a></li> <!-- Adjust size here -->
           <li><a class="is-size-6 has-text-centered">About Us</a></li> <!-- Adjust size here -->
         </ul>
+        <div class="spacer">
+          <p>Favourites</p>
+          <ul class="menu-list" id="favourites"></ul>
+        </div>
         <p class="menu-label">Search</p>
         <!-- search modal -->
         <button class="button" id="modal-button">Start Cooking!</button>
@@ -88,6 +91,7 @@
     <div class="column is-one-fifth">
       <div style="text-align: center;">
         <h3 id="recipe-name"></h3>
+        <button class="button is-invisible" id="fav-button">Favourite</button>
       </div>
       <div id="recipe-ingredients"></div>
       <div id="recipe-info"></div>
@@ -125,19 +129,22 @@
           </div>
         </div>
 
-        <!-- inuut field -->
+        <!-- input field -->
         <div class="field">
           <label class="label has-text-primary">Search Here:</label>
-          <div class="control">
+          <div class="control" id="form-inputs">
             <input class="input" type="text" placeholder="What would you like to cook today?" id="input-ingredient">
+          </div>
+          <div id="ing-button-div" class="is-invisible">
+            <button class="button" id="add-ingredient-button">Add Ingredient</button>
           </div>
         </div>
 
         <!-- vegetarian check -->
-        <div class="field">
+        <div class="field" id="vegetarian-div">
           <div class="control">
             <label class="checkbox">
-              <input type="checkbox">
+              <input type="checkbox" id="vegetarian-check">
               <span class="has-text-primary">Vegetarian</span>
             </label>
           </div>
