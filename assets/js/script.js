@@ -401,7 +401,7 @@ function favouriteRecipe() {
 //displaying favourited recipes
 function displayFavouritesOnStartup() {
 
-  console.log(savedRecipes);
+  // console.log(savedRecipes);
 
   for(let i = 0; i < savedRecipes.length; i++ ) {
     let favButtonEl = document.createElement(`button`);
