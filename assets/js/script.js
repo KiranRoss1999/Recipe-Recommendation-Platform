@@ -1,4 +1,5 @@
-const ytAPIKey = 'AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ';
+// const ytAPIKey = 'AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ';
+const ytAPIKey = `AIzaSyAhL1f6J1duzQ2_oWLaCw5ciRIbMBzKr0k`;
 // const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
 // const spoonAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
 const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
@@ -39,6 +40,9 @@ const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
 //amount of extra ingredients allowed to be added
 const maxAdd = 2;
 let clicked = 0;
+
+//local data checker
+let matched = 0;
 
 //recipe tracker for button clicks
 let displayedRecipe = {
@@ -395,10 +399,8 @@ function clearInputs() {
 //storing recipe id to local storage if favourited
 function favouriteRecipe() {
 
-  let matched = 0;
-  
   for(let i = 0; i <savedRecipes.length; i++) {
-    if(savedRecipes[i].id = displayedRecipe.id) {
+    if(savedRecipes[i].id === displayedRecipe.id) {
       matched = 1;
     }
   }
@@ -407,8 +409,19 @@ function favouriteRecipe() {
     savedRecipes.push(displayedRecipe);
 
     localStorage.setItem(`recipes`, JSON.stringify(savedRecipes));
+
+    //create a button
+    let favButtonEl = document.createElement(`button`);
+    favButtonEl.classList = `button created-buttons`;
+    favButtonEl.setAttribute(`id`, displayedRecipe.id);
+    favButtonEl.textContent = displayedRecipe.name;
+
+    let favLiEl = document.createElement(`li`);
+    favLiEl.appendChild(favButtonEl);
+    favDivEl.appendChild(favLiEl);
   } else {
     console.log(`Recipe already saved.`);
+    matched = 0;
   }
 } 
 
@@ -468,14 +481,17 @@ selectEl.addEventListener(`change`, function(event) {
 
 favButtonEl.addEventListener(`click`, function(event) {
 
-  console.log(displayedRecipe);
+  // console.log(displayedRecipe);
 
   if(event.target) {
+    // console.log(savedRecipes);
     favouriteRecipe();
   }
 });
 
 displayFavouritesOnStartup();
+
+
 
 //carousel js
 
@@ -493,7 +509,7 @@ function displayRecommended() {
       }
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       carouselData(data);
     })
     .catch(function (error) {
@@ -506,7 +522,7 @@ function displayRecommended() {
 
 function carouselData(data) {
   const imgEl = document.getElementsByClassName("imgs");
-  console.log(imgEl);
+  // console.log(imgEl);
 
   for (let i = 0; i < data.recipes.length; i++) {
     const imageUrl = data.recipes[i].image;
@@ -530,3 +546,29 @@ const TrandingSlider = new Swiper(".trending-slider", {
 });
 
 displayRecommended();
+
+//dark mode toggle
+
+const modeBtn = document.querySelector('#mode-toggle');
+const bodyEl = document.querySelector('body');
+
+modeBtn.addEventListener('click', function() {
+  bodyEl.classList.toggle('inverted-colors');
+  const pageMode = bodyEl.classList.contains('inverted-colors') ? 'inverted' : 'normal';
+  localStorage.setItem('mode', pageMode);
+  if (bodyEl.classList.contains('inverted-colors')) {
+      bodyEl.style.backgroundColor = 'var(--dark0)';
+  } else {
+      bodyEl.style.backgroundColor = 'var(--primary-color)';
+  }
+  modeBtn.textContent = bodyEl.classList.contains('inverted-colors') ? '☀️' : '🌙';
+});
+function init() {
+  const pageMode = localStorage.getItem('mode');
+  if (pageMode === 'inverted') {
+      bodyEl.classList.add('inverted-colors');
+      bodyEl.style.backgroundColor = 'var(--dark0)';
+      modeBtn.textContent = '🌙';
+  }
+}
+init();
