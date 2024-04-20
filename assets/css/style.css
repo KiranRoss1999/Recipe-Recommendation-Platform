@@ -8,6 +8,25 @@
   --dark2: #223949;
 }
 
+@font-face {
+  font-family: "cheese";
+  src: url(cheese.otf);
+}
+
+@font-face {
+  font-family: "Gula";
+  src: url(Gula.ttf);
+}
+
+h2 {
+  font-family: "cheese", Arial;
+  font-size: 5rem;
+}
+
+#recipeTitle {
+  font-family: "Gula", Arial;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: var(--primary-color);
@@ -176,9 +195,6 @@ body {
   overflow: auto;
 }
 
-#yt-video {
-}
-
 /* carousel styling */
 
 .container-carousel {
@@ -194,12 +210,6 @@ body {
   margin: auto;
   /* margin-top: 5rem; */
 }
-
-/* 
-#trending .trending-slider {
-  padding: 2rem 0;
-  position: relative;
-} */
 
 .trending-slide {
   width: 30rem;
@@ -250,8 +260,24 @@ body {
   }
 }
 
-@media (max-width: 1440px) {
-  #trending {
-    padding: 7rem 0;
-  }
+#recipe-ingredients {
+  overflow: auto;
+  max-height: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 5%;
+  padding-left: 30px;
+}
+
+#recipe-info {
+  overflow: auto;
+  max-height: 300px;
+  padding-left: 30px;
+}
+
+#yt-video {
+  width: 556px;
+  height: 370px;
+  max-width: 100%;
+  max-height: 100%;
 }

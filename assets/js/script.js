@@ -1,13 +1,15 @@
-// // FUNCTION TO GENERATE THE DATA OF THE API FETCH TO DISPLAY ON THE CAROUSEL ELEMENTS
-// const ytAPIKey1 = "AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ";
-const ytAPIKey = `AIzaSyB8JunYZS0Tfsbqfzs5h2nSe-k9L1AgVGI`;
+// LIST OF MULTIPLE API KEYS WE CREATED (kept running out during testing)
+const ytAPIKey = "AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ";
+// const ytAPIKey = `AIzaSyB8JunYZS0Tfsbqfzs5h2nSe-k9L1AgVGI`;
 // const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
 // const spoonAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
-const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
+// const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
 // const spoonAPIKey = `dc0bf729c1574eea929baf3fa523b239`;
+const spoonAPIKey = `75fbd3ac66284b7e9e621722cddc49f9`;
 
 // const mitraAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
 
+// EVENT LISTENER TO TRIGGER DARK/LIGHT MODE FUNCTION
 const modeBtn = document.querySelector("#mode-toggle");
 const bodyEl = document.querySelector("body");
 modeBtn.addEventListener("click", function () {
@@ -26,6 +28,7 @@ modeBtn.addEventListener("click", function () {
     : "🌙";
 });
 
+// DARK/LIGHT MODE FUNCTION
 function init() {
   const pageMode = localStorage.getItem("mode");
   if (pageMode === "inverted") {
@@ -36,14 +39,14 @@ function init() {
 }
 init();
 
-//modal stuff
+// MODAL VARIABLES
 const modalEl = document.getElementById(`search-modal`);
 const modalButton = document.getElementById(`modal-button`);
 const modalClose = document.getElementById(`close-modal`);
 const formClose = document.getElementById(`close-form`);
 const vegetarianDivEl = document.getElementById(`vegetarian-div`);
 
-//form stuff
+// FORM VARIABLES
 const inputEl = document.getElementById(`input-ingredient`);
 const formEl = document.getElementById(`search-form`);
 const selectEl = document.getElementById(`search-select`);
@@ -52,10 +55,10 @@ const addIngDivEl = document.getElementById(`ing-button-div`);
 const formInputsDivEl = document.getElementById(`form-inputs`);
 const isVegetarianEl = document.getElementById(`vegetarian-check`);
 
-//extra ingredients selectors
+// EXTRA INGREDIENTS SELECTORS
 const ingredientEl = document.getElementsByClassName(`input`);
 
-//recipe displays
+// RECIPE DISPLAYS
 const recipeNameEl = document.getElementById(`recipe-name`);
 const recipeInfoEl = document.getElementById(`recipe-info`);
 const recipeIngEl = document.getElementById(`recipe-ingredients`);
@@ -65,52 +68,52 @@ const ytVidEl = document.getElementById(`yt-video`);
 const favButtonEl = document.getElementById(`fav-button`);
 const favDivEl = document.getElementById(`favourites`);
 
-//created buttons
+// BUTTONS
 const createdRecipesEl = document.getElementById(`recipe-buttons`);
 const createdButtonsEl = document.getElementsByClassName(`created-buttons`);
 
-//amount of extra ingredients allowed to be added
+// Number of extra ingredients allowed to be added
 const maxAdd = 2;
 let clicked = 0;
 
-//recipe tracker for button clicks
+// Recipe tracker for button clicks
 let displayedRecipe = {
   id: ``,
   name: ``,
 };
 
-//grabbing and stored data
+// GETTING LOCAL STORAGE DATA
 let savedRecipes = JSON.parse(localStorage.getItem(`recipes`));
 if (savedRecipes === null) {
   savedRecipes = [];
 }
 
-// function opens modal
+// FUNCTION TO OPEN THE MODAL
 function openModal() {
   modalEl.classList.add(`is-active`);
 }
 
-//function closes modal
+// FUNCTION TO CLOSE THE MODAL
 function closeModal() {
   modalEl.classList.remove(`is-active`);
 }
 
-//show modal on clicking right button
+// EVENT LISTENER FOR MODAL
 modalButton.addEventListener(`click`, function (event) {
   // console.log(`it clicked`);
   openModal();
   clearInputs();
 
-  //reset extra ingredient count
+  // Reset extra ingredient count
   clicked = 0;
 });
 
-//close modal on click the x icon
+// Close modal on click the x icon
 modalClose.addEventListener(`click`, function (event) {
   closeModal();
 });
 
-//close modal on clicking cancel button on form
+// Close modal on clicking cancel button on form
 formClose.addEventListener(`click`, function (event) {
   closeModal();
 });
@@ -495,6 +498,7 @@ favButtonEl.addEventListener(`click`, function (event) {
 
 displayFavouritesOnStartup();
 
+// FUNCTION TO FETCH DATA FROM API, THEN EXECUTE CAROUSEL IF IT WORKS
 function displayCarousel() {
   let randomAPI = `https://api.spoonacular.com/recipes/random?number=13&apiKey=${spoonAPIKey}`;
 
@@ -518,9 +522,10 @@ function displayCarousel() {
     });
 }
 
+// FUNCTION TO LOAD DATA ONTO CAROUSEL
+const imgEl = document.getElementsByClassName("imgs");
+const titleEl = document.getElementById("recipeTitle");
 function carouselData(data) {
-  const imgEl = document.getElementsByClassName("imgs");
-  const titleEl = document.getElementById("recipeTitle");
   console.log(imgEl);
 
   for (let i = 0; i < data.recipes.length; i++) {
@@ -533,18 +538,29 @@ function carouselData(data) {
   }
 }
 
+// initializing the swiper object and creating "coverflow" to get the carousel we want
 const TrendingSlider = new Swiper(".trending-slider", {
   effect: "coverflow",
   grabCursor: true,
   centeredSlides: true,
   loop: true,
   slidesPerView: "auto",
+  slideShadows: true,
   coverflowEffect: {
     rotate: 0,
     scale: 1,
     stretch: 0,
     depth: 50,
     modifier: 2.5,
+  },
+  // Changes the title above to the corresponding slide underneath
+  on: {
+    slideChange: function () {
+      const activeSlideIndex = this.activeIndex;
+      const activeSlideTitle =
+        imgEl[activeSlideIndex].getAttribute("data-title");
+      titleEl.textContent = activeSlideTitle; // Update title based on active slide
+    },
   },
 });
 
