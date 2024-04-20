@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🍴 CookTube 🍴</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/about-us.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="box">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a id="homePage" class="navbar-item">Home</a>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">More</a>
+                <div class="navbar-dropdown">
+                  <a id="aboutUsPage" class="navbar-item">About Us</a>
+                  <a id="contactPage" class="navbar-item">Contact</a>
+                  <hr class="navbar-divider" />
+                  <a class="navbar-item more-button">Report an issue</a>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a id="gitPage" class="button is-primary github-button"
+                    ><strong>GitHub</strong></a
+                  >
+                  <a id="mode-toggle" class="button is-light"
+                    ><strong>🌙</strong></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero-box">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column">
+            <p class="title is-size-1-desktop is-size-2-mobile">
+              🍴 CookTube 🍴
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the Team! -->
+    <h2 class="is-size-1 has-text-centered mb-4">Meet the Team!</h2>
+    <div
+      id="team-box"
+      class="columns box mx-3 p-3 is-flex-wrap-wrap is-flex-direction-column"
+    >
+      <figure
+        class="image box columns p-5 is-full is-flex-direction-row is-flex-shrink-2"
+      >
+        <img
+          class="is-rounded is-square"
+          src="./assets/images/kiran photo.jpg"
+          alt="photo of Kiran, our head designer and front-end developer"
+        />
+        <p
+          class="p-6 ml-5 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
+        >
+          Kieran is our versatile front-end developer and our head designer.
+          Coming out of university, he has accumulated over 10 years of
+          experience honing and specialising in front-end, designing famous
+          websites like Facebook, Discord, and Leetcode. Now as a head designer,
+          he is responsible for the growth of his junior designer and
+          developers, and has been an excellent mentor and inspiration for his
+          employees. As he is now a friend of Mark Zuckerberg, he will often
+          host networking and programming workshop events with Mark with huge
+          success.
+        </p>
+      </figure>
+
+      <figure
+        class="image columns box p-5 mt-5 is-full is-flex-direction-row is-flex-shrink-2"
+      >
+        <img
+          class="is-rounded is-5by-4"
+          src="./assets/images/kathy photo.jpg"
+          alt="photo of Kathy, our designer"
+        />
+        <p
+          class="p-6 ml-5 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
+        >
+          Katherine is one of our junior designers, who has been working under
+          Kieran for 4 years. Coming from a background of arts and 3D computer
+          graphics such as Blender, she has amassed a great skill of
+          implementing complex designs into her web development. After
+          completing her course at the Royal College of Art, she involved
+          herself in the character and landscape designs for Larian Studios on
+          their most recent work, Baldurs Gate 3.
+        </p>
+      </figure>
+      <figure
+        class="image columns box p-5 mt-5 is-full is-flex-direction-row is-flex-shrink-2"
+      >
+        <img
+          class="is-rounded is-square"
+          src="./assets/images/timothy photo.png"
+          alt="photo of Tim, our beloved API back-end developer and javascript whizz"
+        />
+        <p
+          class="p-6 ml-5 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
+        >
+          Tim is our head API developer and algorithm specialist. He has a
+          diverse skillset for multiple avenues of programming, acquiring over
+          15 years of experience overall. After completing an Atlassian
+          internship and dabbling in game development for Bethesda and Epic
+          Games as a young adult, he moved on and completed a degree in
+          Electrical engineering with Distinction. In his spare time he has been
+          one of the top percent of Stack Overflow contributors, assisting other
+          developers with their algorithms and pseudocoding.
+        </p>
+      </figure>
+      <figure
+        class="image columns box p-5 mt-5 is-full is-flex-direction-row is-flex-shrink-2"
+      >
+        <img
+          class="is-rounded is-square"
+          src="./assets/images/mitra photo.jpeg"
+          alt="photo of Mitra, the Project Manager and full-stack allrounder"
+        />
+        <p
+          class="p-6 ml-5 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
+        >
+          Mitra is our project manager and full-stack allrounder who oversees
+          the team here. With an original background of HR, Mitra has come a
+          long way to entering the development world, completing a computer
+          science degree at Harvard and strengthening her skills as a direct
+          intern developer under Bill Gates for 5 years. Her vast experience
+          across HR, management, and programming allows her to be invovled in
+          her development team's work while also managing interpersonal
+          relations.
+        </p>
+      </figure>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+      <h3 class="ml-5">Some Footer</h3>
+    </footer>
+
+    <script src="./assets/js/about-us.js"></script>
+  </body>
+</html>
