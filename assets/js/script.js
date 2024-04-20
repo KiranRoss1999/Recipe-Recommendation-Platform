@@ -1,12 +1,14 @@
 //api keys
 const ytAPIKey = "AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ";
 // const ytAPIKey = `AIzaSyB8JunYZS0Tfsbqfzs5h2nSe-k9L1AgVGI`;
-const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
-// const spoonAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
+
+// const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
 // const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
 // const spoonAPIKey = `dc0bf729c1574eea929baf3fa523b239`;
+// const spoonAPIKey = `92a9d5123d4445d19b6f895e812b0c98`;
+const spoonAPIKey = `75fbd3ac66284b7e9e621722cddc49f9`;
 
-// const mitraAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
+const mitraAPIKey = "07b90ac4c2c44b42b5f99c3bc714f49e";
 
 //modal stuff
 const modalEl = document.getElementById(`search-modal`);
@@ -36,6 +38,7 @@ const recipeSumBoxEl = document.getElementById(`recipe-info-container`);
 const ytVidEl = document.getElementById(`yt-video`);
 const favButtonEl = document.getElementById(`fav-button`);
 const favDivEl = document.getElementById(`favourites`);
+const recipeSummaryEl = document.getElementById(`recipe-summary`);
 
 //created buttons
 const createdRecipesEl = document.getElementById(`recipe-buttons`);
@@ -99,26 +102,6 @@ function closeModal() {
   modalEl.classList.remove(`is-active`);
 }
 
-//show modal on clicking right button
-modalButton.addEventListener(`click`, function(event) {
-  // console.log(`it clicked`);
-  openModal();
-  clearInputs();
-
-  //reset extra ingredient count
-  clicked = 0;
-});
-
-//close modal on click the x icon
-modalClose.addEventListener(`click`, function(event) {
-  closeModal();
-});
-
-//close modal on clicking cancel button on form
-formClose.addEventListener(`click`, function(event) {
-  closeModal();
-});
-
 //creating buttons with recipe names from ingredient search
 function createButtonsIng(data) {
   
@@ -160,32 +143,27 @@ function createButtonsRecipe(data) {
   buttonInit();
 }
 
-//clearing display to make room for a new display call
-function clearDisplay() {
+//function for when created buttons are clicked
+function buttonInit() {
 
-  while(recipeIngEl.firstChild) {
-    recipeIngEl.firstChild.remove();
+  // console.log(createdButtonsEl);
+
+  for(let i = 0; i < createdButtonsEl.length; i++) {
+    createdButtonsEl[i].addEventListener(`click`, function(event) {
+      // console.log(`it works`);
+
+      let recipeId = createdButtonsEl[i].id;
+
+      let buttonIDAPI = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${spoonAPIKey}`;
+
+      clearDisplay();
+      spoonAPICallerButton(buttonIDAPI);
+
+      // console.log(recipeId);
+    
+    });
   }
-
-  while(recipeInfoEl.firstChild) {
-    recipeInfoEl.firstChild.remove();
-  }
-
-  // console.log(recipeSumBoxEl.childNodes);
-  if(recipeSumBoxEl.childElementCount > 2) {
-    // console.log(recipeSumBoxEl.childNodes[5]);
-    // console.log(`theres stuff`);
-    recipeSumBoxEl.childNodes[5].remove();
-  }
-}
-
-
-//clearing buttons when a new search is submitted
-function clearButtons() {
-
-  while(createdRecipesEl.firstChild) {
-    createdRecipesEl.firstChild.remove();
-  }
+  // console.log(createdButtonsEl.length);
 }
 
 //displaying recipe info
@@ -214,15 +192,15 @@ function createRecipeInfo(data) {
 
   let recipeInfo = document.createElement('p');
   recipeInfo.innerHTML = summary;
-  recipeSumBoxEl.appendChild(recipeInfo);
-  recipeSumBoxEl.classList = `box`;
+  recipeSummaryEl.appendChild(recipeInfo);
+  recipeSummaryEl.classList = `box`;
   
   let infoEl = document.createElement(`p`);
   infoEl.innerHTML = instructions;
   recipeInfoEl.appendChild(infoEl);
   recipeInfoEl.classList = `box`;
 
-  ytAPICaller(rName);
+  // ytAPICaller(rName);
 
   favButtonEl.classList.remove(`is-invisible`);
 
@@ -321,88 +299,7 @@ fetch(apiURL)
 
 }
 
-//function for when form is submitted
-formEl.addEventListener(`submit`, function(event) {
-  event.preventDefault();
-
-  // console.log(inputEl.value);
-
-  if(!inputEl.value) {
-    console.log(`Nothing entered`);
-    closeModal();
-    inputEl.value = ``;
-  } else {
-    clicked = 0;
-    // console.log(inputEl.value);
-    let spoonInput = inputEl.value;
-
-    //calling api depending on selector
-    if(selectEl.value === `By Ingredient`) {
-      // console.log(`it matches ingredient`);
-
-      //checking if extra ingredients were added
-      if(ingredientEl.length > 1) {
-        for(let i = 1; i < ingredientEl.length; i++) {
-          // console.log(ingredientEl[i].value);
-          
-          let extraIng = `,+` + ingredientEl[i].value;
-          // console.log(extraIng);
-          spoonInput = spoonInput.concat(extraIng);
-          // console.log(newString);
-        }
-      }
-
-      let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
-      
-      clearButtons();
-      spoonAPICallerIng(apiURL);
-      
-    } else if(selectEl.value === `By Recipe Name`) {
-      // console.log(`it matches recipe name`);
-      if(isVegetarianEl.checked) {
-        let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&diet=vegetarian&number=5&apiKey=${spoonAPIKey}`;
-        clearButtons();
-        spoonAPiCallerRecipe(apiURL);
-        // console.log(`vegetarian checked`);
-        // console.log(apiURL);
-      } else {
-        let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
-        clearButtons();
-        spoonAPiCallerRecipe(apiURL);
-      }
-    } else {
-      console.log(`it doesnt match`);
-    }
-    
-    closeModal();
-    inputEl.value = ``;
-  }
-});
-
-//function for when created buttons are clicked
-function buttonInit() {
-
-  // console.log(createdButtonsEl);
-
-  for(let i = 0; i < createdButtonsEl.length; i++) {
-    createdButtonsEl[i].addEventListener(`click`, function(event) {
-      // console.log(`it works`);
-
-      let recipeId = createdButtonsEl[i].id;
-
-      let buttonIDAPI = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${spoonAPIKey}`;
-
-      clearDisplay();
-      spoonAPICallerButton(buttonIDAPI);
-
-      // console.log(recipeId);
-    
-    });
-  }
-  // console.log(createdButtonsEl.length);
-}
-
-//make extra inputs
+//make extra inputs for extra ingredients
 function addInput() {
   let inputId = `input` + clicked;
   let input = document.createElement(`input`);
@@ -411,6 +308,31 @@ function addInput() {
   input.setAttribute(`id`, inputId);
 
   formInputsDivEl.appendChild(input);
+}
+
+//clearing display to make room for a new display call
+function clearDisplay() {
+
+  while(recipeIngEl.firstChild) {
+    recipeIngEl.firstChild.remove();
+  }
+
+  while(recipeInfoEl.firstChild) {
+    recipeInfoEl.firstChild.remove();
+  }
+
+  // console.log(recipeSummaryEl.firstChild);
+  while(recipeSummaryEl.firstChild) {
+    recipeSummaryEl.firstChild.remove();
+  }
+}
+
+//clearing buttons when a new search is submitted
+function clearButtons() {
+
+  while(createdRecipesEl.firstChild) {
+    createdRecipesEl.firstChild.remove();
+  }
 }
 
 //clear extra inputs on new search
@@ -481,6 +403,26 @@ function displayFavouritesOnStartup() {
   buttonInit();
 }
 
+//show modal on clicking right button
+modalButton.addEventListener(`click`, function(event) {
+  // console.log(`it clicked`);
+  openModal();
+  clearInputs();
+
+  //reset extra ingredient count
+  clicked = 0;
+});
+
+//close modal on click the x icon
+modalClose.addEventListener(`click`, function(event) {
+  closeModal();
+});
+
+//close modal on clicking cancel button on form
+formClose.addEventListener(`click`, function(event) {
+  closeModal();
+});
+
 //adds extra inputs if user wants to add more ingredients
 addIngEl.addEventListener(`click`, function(event) {
 
@@ -524,6 +466,65 @@ favButtonEl.addEventListener(`click`, function(event) {
   }
 });
 
+//function for when form is submitted
+formEl.addEventListener(`submit`, function(event) {
+  event.preventDefault();
+
+  // console.log(inputEl.value);
+
+  if(!inputEl.value) {
+    console.log(`Nothing entered`);
+    closeModal();
+    inputEl.value = ``;
+  } else {
+    clicked = 0;
+    // console.log(inputEl.value);
+    let spoonInput = inputEl.value;
+
+    //calling api depending on selector
+    if(selectEl.value === `By Ingredient`) {
+      // console.log(`it matches ingredient`);
+
+      //checking if extra ingredients were added
+      if(ingredientEl.length > 1) {
+        for(let i = 1; i < ingredientEl.length; i++) {
+          // console.log(ingredientEl[i].value);
+          
+          let extraIng = `,+` + ingredientEl[i].value;
+          // console.log(extraIng);
+          spoonInput = spoonInput.concat(extraIng);
+          // console.log(newString);
+        }
+      }
+
+      let apiURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
+      
+      clearButtons();
+      spoonAPICallerIng(apiURL);
+      
+    } else if(selectEl.value === `By Recipe Name`) {
+      // console.log(`it matches recipe name`);
+      if(isVegetarianEl.checked) {
+        let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&diet=vegetarian&number=5&apiKey=${spoonAPIKey}`;
+        clearButtons();
+        spoonAPiCallerRecipe(apiURL);
+        // console.log(`vegetarian checked`);
+        // console.log(apiURL);
+      } else {
+        let apiURL = `https://api.spoonacular.com/recipes/complexSearch?query=${spoonInput}&number=5&apiKey=${spoonAPIKey}`;
+        clearButtons();
+        spoonAPiCallerRecipe(apiURL);
+      }
+    } else {
+      console.log(`it doesnt match`);
+    }
+    
+    closeModal();
+    inputEl.value = ``;
+  }
+});
+
+
 displayFavouritesOnStartup();
 
 // function with a clear button attached not working
@@ -557,12 +558,11 @@ function displayFavouritesOnStartupClear() {
   //   }
   
   //   buttonInit();
-  }
+}
   
-
 //carousel js
 function displayCarousel() {
-  let randomAPI = `https://api.spoonacular.com/recipes/random?number=13&apiKey=${spoonAPIKey}`;
+  let randomAPI = `https://api.spoonacular.com/recipes/random?number=13&apiKey=${mitraAPIKey}`;
 
   fetch(randomAPI)
     .then(function (response) {
