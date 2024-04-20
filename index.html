@@ -9,15 +9,14 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
     />
-    <!-- PACKAGE LINKS FOR CAROUSEL  -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-    />
+    /> -->
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
@@ -42,14 +41,13 @@
           </div>
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-              <a class="navbar-item">Home</a>
-              <a class="navbar-item">My Pantry 🍳</a>
+              <a id="homePage" class="navbar-item">Home</a>
+              <a id="modal-button" class="navbar-item">My Pantry 🍳</a>
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">More</a>
                 <div class="navbar-dropdown">
-                  <a class="navbar-item">About</a>
-                  <a class="navbar-item is-selected">About</a>
-                  <a class="navbar-item">Contact</a>
+                  <a id="aboutUsPage" class="navbar-item">About Us</a>
+                  <a id="contactPage" class="navbar-item">Contact</a>
                   <hr class="navbar-divider" />
                   <a class="navbar-item more-button">Report an issue</a>
                 </div>
@@ -58,7 +56,7 @@
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">
-                  <a class="button is-primary github-button"
+                  <a id="gitPage" class="button is-primary github-button"
                     ><strong>GitHub</strong></a
                   >
                   <a id="mode-toggle" class="button is-light"
@@ -86,21 +84,22 @@
     </section>
 
     <!-- Main content -->
-    <div class="columns box ml-3">
+    <div class="columns box mx-3">
       <!-- side menu -->
       <div class="column is-one-fifth">
         <aside class="menu has-text-centered">
           <p class="menu-label is-size-4">Your Menu!</p>
           <!-- Adjust size here -->
           <ul class="menu-list">
-            <li><a class="is-size-6 has-text-centered">Favourites</a></li>
-            <!-- Adjust size here -->
-            <li><a class="is-size-6 has-text-centered">About Us</a></li>
             <!-- Adjust size here -->
           </ul>
-          <p class="menu-label">Search</p>
+          <div class="spacer">
+            <p>Favourites</p>
+            <ul class="menu-list" id="favourites"></ul>
+          </div>
+          <!-- <p class="menu-label">Search</p> -->
           <!-- search modal -->
-          <button class="button" id="modal-button">Start Cooking!</button>
+          <!-- <button class="button" id="modal-button">Start Cooking!</button> -->
           <div class="spacer">
             <p>Your requested recipes will show here:</p>
           </div>
@@ -112,20 +111,18 @@
       <div class="column is-one-fifth">
         <div style="text-align: center">
           <h3 id="recipe-name"></h3>
+          <button class="button is-invisible" id="fav-button">Favourite</button>
         </div>
         <div id="recipe-ingredients"></div>
         <div id="recipe-info"></div>
       </div>
 
       <!-- Recipe images and videos -->
-      <div class="column">
+      <div class="column is-three-fifths">
         <div id="recipe-info-container">
           <img id="recipe-picture" />
-        </div>
-        <div>
-          <figure class="image is-16by9"></figure>
           <iframe
-            class="has-ratio"
+            class="has-ratio is-flex-direction-row is-flex-grow-1"
             width="640"
             height="360"
             src=""
@@ -137,42 +134,99 @@
       </div>
     </div>
 
-    <div id="carousel-column" class="columns">
+    <!-- CAROUSEL RESPONSIVE SLIDER -->
+    <div id="carousel-row" class="columns mx-3 is-flex-direction-row">
+      <!-- <div class="columns has-text-centered">
+        <h2 id="recipeTitle"></h2>
+      </div> -->
       <section id="trending">
+        <h2 id="recipeTitle" class="is-size-2 has-text-centered"></h2>
         <div class="container-carousel">
           <div class="swiper trending-slider">
             <div class="swiper-wrapper">
-              <!-- Slide-start -->
+              <!-- SLIDE 1 -->
               <div class="swiper-slide trending-slide">
                 <div class="trending-slide-img recipeRandom">
                   <img src="" class="imgs" loading="lazy" />
                 </div>
               </div>
+              <!-- SLIDE 2 -->
               <div class="swiper-slide trending-slide">
                 <div class="trending-slide-img recipeRandom">
                   <img src="" class="imgs" loading="lazy" />
                 </div>
               </div>
+              <!-- SLIDE 3 -->
               <div class="swiper-slide trending-slide">
                 <div class="trending-slide-img recipeRandom">
                   <img src="" class="imgs" loading="lazy" />
                 </div>
               </div>
+              <!-- SLIDE 4 -->
               <div class="swiper-slide trending-slide">
                 <div class="trending-slide-img recipeRandom">
                   <img src="" class="imgs" loading="lazy" />
                 </div>
               </div>
+              <!-- SLIDE 5 -->
               <div class="swiper-slide trending-slide">
                 <div class="trending-slide-img recipeRandom">
                   <img src="" class="imgs" loading="lazy" />
                 </div>
+              </div>
+              <!-- SLIDE 6 -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <!-- SLIDE 7 -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <!-- SLIDE 8 -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <!-- SLIDE 9 -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <!-- SLIDE 10 -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <!-- SLIDE 11 -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <!-- SLIDE 12 -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
+              <!-- SLIDE 13 -->
+              <div class="swiper-slide trending-slide">
+                <div class="trending-slide-img recipeRandom">
+                  <img src="" class="imgs" loading="lazy" />
+                </div>
+              </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
 
     <!-- Modal -->
     <div class="modal" id="search-modal">
@@ -192,10 +246,10 @@
             </div>
           </div>
 
-          <!-- inuut field -->
+          <!-- input field -->
           <div class="field">
             <label class="label has-text-primary">Search Here:</label>
-            <div class="control">
+            <div class="control" id="form-inputs">
               <input
                 class="input"
                 type="text"
@@ -203,13 +257,18 @@
                 id="input-ingredient"
               />
             </div>
+            <div id="ing-button-div" class="is-invisible">
+              <button class="button" id="add-ingredient-button">
+                Add Ingredient
+              </button>
+            </div>
           </div>
 
           <!-- vegetarian check -->
-          <div class="field">
+          <div class="field" id="vegetarian-div">
             <div class="control">
               <label class="checkbox">
-                <input type="checkbox" />
+                <input type="checkbox" id="vegetarian-check" />
                 <span class="has-text-primary">Vegetarian</span>
               </label>
             </div>
@@ -238,18 +297,7 @@
       <h3 class="ml-5">Some Footer</h3>
     </footer>
 
-    <!-- THE DOCUMENTATION PACKAGE FROM SWIPER FOR THE FUNCTIONS -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
