@@ -9,6 +9,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Galada&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -110,8 +113,8 @@
       <!-- Recipe info -->
       <div class="column is-one-fifth">
         <div style="text-align: center">
-          <h3 id="recipe-name"></h3>
-          <button class="button is-invisible" id="fav-button">Favourite</button>
+          <h1 id="recipe-name"></h1>
+          <button class="button is-invisible is-small has-text-black mt-2" id="fav-button">Favourite</button>
         </div>
         <div id="recipe-ingredients"></div>
         <div id="recipe-info"></div>
@@ -128,6 +131,7 @@
             allowfullscreen
             id="yt-video"
           ></iframe>
+          <div id="recipe-summary"></div>
         </div>
       </div>
     </div>
@@ -138,7 +142,8 @@
         <h2 id="recipeTitle"></h2>
       </div> -->
       <section id="trending">
-        <h2 id="recipeTitle" class="is-size-2 has-text-centered"></h2>
+        <h2 class="has-text-centered">POPULAR RECIPES OF THE WEEK</h2>
+        <h2 id="recipeTitle" class="is-size-2 has-text-centered has-text-galada"></h2>
         <div class="container-carousel">
           <div class="swiper trending-slider">
             <div class="swiper-wrapper">
@@ -255,16 +260,10 @@
                 id="input-ingredient"
               />
             </div>
-            <div id="ing-button-div" class="is-invisible">
-              <button class="button" id="add-ingredient-button">
-                Add Ingredient
-              </button>
-            </div>
-          </div>
 
           <!-- vegetarian check -->
           <div class="field" id="vegetarian-div">
-            <div class="control">
+            <div class="control mt-4">
               <label class="checkbox">
                 <input type="checkbox" id="vegetarian-check" />
                 <span class="has-text-primary">Vegetarian</span>
@@ -272,13 +271,20 @@
             </div>
           </div>
 
+          <div id="ing-button-div" class="is-invisible">
+            <button class="button has-text-black mb-5" id="add-ingredient-button">
+              Add Ingredient
+            </button>
+          </div>
+         </div>
+
           <!-- submit/close buttons -->
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link">Submit</button>
+              <button class="button is-link has-text-black">Submit</button>
             </div>
             <div class="control">
-              <button class="button is-link" id="close-form">Cancel</button>
+              <button class="button is-link has-text-black" id="close-form">Cancel</button>
             </div>
           </div>
         </form>
@@ -289,11 +295,6 @@
         aria-label="close"
       ></button>
     </div>
-
-    <!-- Footer -->
-    <footer>
-      <h3 class="ml-5">Some Footer</h3>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./assets/js/script.js"></script>

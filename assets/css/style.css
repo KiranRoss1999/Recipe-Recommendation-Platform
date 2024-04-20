@@ -3,15 +3,31 @@
   --secondary-color: #f7dcb9;
   --accent-color: #deac80;
   --dark-color: #b99470;
-  --dark0: #430346;
-  --dark1: #000000;
+  --dark0: #6280d1;
+  --dark1: #203a5e;
   --dark2: #223949;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arvo', sans-serif;
   background-color: var(--primary-color);
   color: var(--dark-color);
+}
+
+@font-face {
+  font-family: "cheese";
+  src: url(cheese.otf);
+}
+@font-face {
+  font-family: "Gula";
+  src: url(Gula.ttf);
+}
+h2 {
+  font-family: "cheese", Arial;
+  font-size: 5rem;
+}
+#recipeTitle {
+  font-family: "Gula", Arial;
 }
 
 .navbar {
@@ -102,7 +118,7 @@ footer {
 }
 
 .inverted-colors *:not(img) {
-  background-color: black;
+  background-color: var(--dark1);
   color: white;
 }
 
@@ -149,7 +165,7 @@ footer {
 }
 
 #modal-button {
-  color: var(--dark1);
+  color: black;
 }
 
 #recipe-info-container p {
@@ -174,9 +190,6 @@ html,
 body {
   height: 100%;
   overflow: auto;
-}
-
-#yt-video {
 }
 
 /* carousel styling */
@@ -250,12 +263,6 @@ body {
   }
 }
 
-@media (max-width: 1440px) {
-  #trending {
-    padding: 7rem 0;
-  }
-}
-
 #recipe-ingredients {
   overflow: auto; 
   max-height: 300px;
@@ -277,4 +284,3 @@ body {
   max-width: 100%;
   max-height: 100%;
 }
-
