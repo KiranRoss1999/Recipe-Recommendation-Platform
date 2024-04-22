@@ -12,7 +12,7 @@ const spoonAPIKey = `75fbd3ac66284b7e9e621722cddc49f9`;
 // const spoonAPIKey = `22d4fcd6a1bc486d99ef6e6a6671d701`;
 // const mitraAPIKey = `07b90ac4c2c44b42b5f99c3bc714f49e`;
 // const mitraAPIKey = `dc0bf729c1574eea929baf3fa523b239`;
-const mitraAPIKey = `69a78db739a642a7872981d09f236e5a`
+const mitraAPIKey = `69a78db739a642a7872981d09f236e5a`;
 
 // Modal selectors
 const modalEl = document.getElementById(`search-modal`);
