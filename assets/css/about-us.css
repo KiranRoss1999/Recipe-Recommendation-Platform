@@ -1,11 +1,41 @@
+/*  */
+/* BELOW IS THE CORRECT CODE */
+/*  */
+
 :root {
   --primary-color: #b5c18e;
   --secondary-color: #f7dcb9;
   --accent-color: #deac80;
   --dark-color: #b99470;
-  --dark0: #430346;
-  --dark1: #000000;
+  --dark0: #6280d1;
+  --dark1: #203a5e;
   --dark2: #223949;
+}
+
+/* UNIVERSAL/MAIN SELECTOR STYLING */
+html,
+body {
+  height: auto;
+  font-family: "Arvo", sans-serif;
+  color: var(--accent-color);
+  overflow: auto;
+}
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("./hero.jpg");
+  background-size: auto;
+}
+
+/* Manually adding fonts in that have been downloaded locally */
+@font-face {
+  font-family: "cheese";
+  src: url(cheese.otf);
+}
+
+@font-face {
+  font-family: "Gula";
+  src: url(Gula.ttf);
 }
 
 .image img {
@@ -15,9 +45,12 @@
   border: 0.5rem black solid;
 }
 
-#team-box {
-  background-color: var(--primary-color);
-  box-shadow: none;
+h2.title {
+  font-family: "Cheese";
+}
+
+h2 {
+  font-family: "Gula";
 }
 
 .box {
@@ -25,14 +58,19 @@
   background-color: var(--dark2);
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: var(--primary-color);
-  color: var(--dark-color);
+.inverted-colors img {
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+/* HEADER/NAVBAR STYLING */
+header > .box,
+.navbar {
+  background-color: white;
+  padding: 0px;
 }
 
 .navbar {
-  background-color: var(--primary-color);
   padding: 10px 20px;
 }
 
@@ -40,6 +78,11 @@ body {
   font-weight: bold;
   font-size: 1rem;
   margin-right: 30px;
+}
+
+#gitPage {
+  color: black;
+  font-weight: 600;
 }
 
 .navbar-brand {
@@ -51,8 +94,17 @@ body {
   justify-content: center;
 }
 
-.navbar-dropdown {
-  background-color: white;
+.menu-label {
+  font-size: 1.25rem;
+}
+
+.navbar-item,
+.menu-list li a {
+  background-color: transparent;
+  color: black;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 .navbar-dropdown .navbar-item {
@@ -61,45 +113,6 @@ body {
 
 .navbar-dropdown .navbar-item.more-button {
   color: white !important;
-}
-
-.hero {
-  background-color: var(--secondary-color);
-  color: var(--dark-color);
-  text-align: center;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-.hero-box {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 700px;
-  width: 100%;
-  margin: 0 auto 20px;
-}
-
-.columns {
-  max-width: 100%;
-  max-height: auto;
-}
-
-header > .box {
-  background-color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-footer {
-  background-color: var(--secondary-color);
-  padding: 20px;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
 }
 
 .button {
@@ -115,76 +128,82 @@ footer {
   background-color: var(--dark-color);
 }
 
-.menu-label {
-  font-size: 1.25rem;
-}
-
-.inverted-colors *:not(img) {
-  background-color: black;
-  color: white;
-}
-
-.inverted-colors img {
-  filter: none;
-  mix-blend-mode: difference;
-}
-
-.navbar-item,
-.menu-list li a {
-  background-color: transparent;
-  color: black;
-  padding: 8px 12px;
-  border-radius: 5px;
-  margin: 5px;
-}
-
-.button {
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.spacer {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.button {
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
+/* Inverted colour selectors for nav */
 .inverted-colors .button {
   background-color: white;
   color: black !important;
 }
 
-#modal-button {
-  color: var(--dark1);
-}
-
-#recipe-info-container p {
-  color: black;
-}
-
-.inverted-colors body {
-  background-color: var(--dark0) !important;
-}
-
-.inverted-colors .navbar {
-  background-color: var(--dark0) !important;
+.inverted-colors .menu-list li a {
+  background-color: transparent;
   color: white;
 }
 
-html,
-body {
-  height: 100%;
-  overflow: auto;
+.inverted-colors .navbar-item #modal-button {
+  color: white;
+}
+
+/* HERO SECTION STYLING */
+.hero {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-box {
+  background-color: white;
+  padding: 20px 0px;
+  border-radius: 10px;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
+h2.title {
+  color: var(--dark-color);
+  font-size: 5rem;
+  font-weight: 100;
+}
+
+.box {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* FOOTER STYLING */
+footer {
+  background-color: transparent;
+  padding: 20px;
+  text-align: center;
+  bottom: 0;
+  width: 50%;
+  margin: auto;
+}
+
+/* MEDIA QUERIES FOR RESPONSIVE LAYOUT */
+/* Media query: Mobile */
+@media (max-width: 360px) {
+  h2.title {
+    font-size: 2.5rem;
+  }
+  .image img {
+    height: 18rem;
+    width: 18rem;
+  }
+  p {
+    padding-top: 1rem;
+  }
+}
+
+/* Media query: Tablet */
+@media (min-width: 370px) and (max-width: 1024px) {
+  h2.title {
+    font-size: 3rem;
+  }
 }

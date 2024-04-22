@@ -5,15 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🍴 CookTube 🍴</title>
+    <!-- Bulma cdn link to access CSS framework -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+    <!-- Applying google fonts to the smaller font paragraphs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Galada&display=swap"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/css/about-us.css" />
   </head>
 
   <body>
-    <!-- Navbar -->
+    <!-- NAVBAR -->
     <header>
       <div class="box">
         <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -48,7 +56,7 @@
               <div class="navbar-item">
                 <div class="buttons">
                   <a id="gitPage" class="button is-primary github-button"
-                    ><strong>GitHub</strong></a
+                    >GitHub</a
                   >
                   <a id="mode-toggle" class="button is-light"
                     ><strong>🌙</strong></a
@@ -61,25 +69,19 @@
       </div>
     </header>
 
-    <!-- Hero section -->
+    <!-- HERO SECTION -->
     <section class="hero-box">
       <div class="container">
         <div class="columns is-vcentered">
           <div class="column">
-            <p class="title is-size-1-desktop is-size-2-mobile">
-              🍴 CookTube 🍴
-            </p>
+            <h2 class="title">🍴 CookTube 🍴</h2>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Meet the Team! -->
     <h2 class="is-size-1 has-text-centered mb-4">Meet the Team!</h2>
-    <div
-      id="team-box"
-      class="columns box mx-3 p-3 is-flex-wrap-wrap is-flex-direction-column"
-    >
+    <div class="columns mx-3 p-3 is-flex-wrap-wrap is-flex-direction-column">
       <figure
         class="image box columns p-5 is-full is-flex-direction-row is-flex-shrink-2"
       >
@@ -89,7 +91,7 @@
           alt="photo of Kiran, our head designer and front-end developer"
         />
         <p
-          class="p-6 ml-5 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
+          class="ml-5 mt-6 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
         >
           Kieran is our versatile front-end developer and our head designer.
           Coming out of university, he has accumulated over 10 years of
@@ -112,7 +114,7 @@
           alt="photo of Kathy, our designer"
         />
         <p
-          class="p-6 ml-5 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
+          class="ml-5 mt-6 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
         >
           Katherine is one of our junior designers, who has been working under
           Kieran for 4 years. Coming from a background of arts and 3D computer
@@ -132,7 +134,7 @@
           alt="photo of Tim, our beloved API back-end developer and javascript whizz"
         />
         <p
-          class="p-6 ml-5 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
+          class="ml-5 mt-6 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
         >
           Tim is our head API developer and algorithm specialist. He has a
           diverse skillset for multiple avenues of programming, acquiring over
@@ -153,7 +155,7 @@
           alt="photo of Mitra, the Project Manager and full-stack allrounder"
         />
         <p
-          class="p-6 ml-5 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
+          class="ml-5 mt-6 is-size-3-widescreen is-size-4-desktop is-size-6-mobile"
         >
           Mitra is our project manager and full-stack allrounder who oversees
           the team here. With an original background of HR, Mitra has come a
@@ -167,11 +169,7 @@
       </figure>
     </div>
 
-    <!-- Footer -->
-    <footer class="mt-5">
-      <h3 class="ml-5">Some Footer</h3>
-    </footer>
-
+    <footer><strong>Made with love by the CookTube Family</strong></footer>
     <script src="./assets/js/about-us.js"></script>
   </body>
 </html>

@@ -8,30 +8,45 @@
   --dark2: #223949;
 }
 
+/* UNIVERSAL/MAIN SELECTOR STYLING */
+html,
 body {
-  font-family: 'Arvo', sans-serif;
-  background-color: var(--primary-color);
+  height: auto;
+  font-family: "Arvo", sans-serif;
   color: var(--dark-color);
+  overflow: auto;
 }
 
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("./hero.jpg");
+  background-size: auto;
+}
+
+/* Manually adding fonts in that have been downloaded locally */
 @font-face {
   font-family: "cheese";
   src: url(cheese.otf);
 }
+
 @font-face {
   font-family: "Gula";
   src: url(Gula.ttf);
 }
-h2 {
-  font-family: "cheese", Arial;
-  font-size: 5rem;
+
+.inverted-colors img {
+  filter: none;
+  mix-blend-mode: normal;
 }
-#recipeTitle {
-  font-family: "Gula", Arial;
+
+/* HEADER/NAVBAR STYLING */
+header > .box,
+.navbar {
+  background-color: white;
+  padding: 0px;
 }
 
 .navbar {
-  background-color: var(--primary-color);
   padding: 10px 20px;
 }
 
@@ -39,6 +54,11 @@ h2 {
   font-weight: bold;
   font-size: 1rem;
   margin-right: 30px;
+}
+
+#gitPage {
+  color: black;
+  font-weight: 600;
 }
 
 .navbar-brand {
@@ -50,8 +70,17 @@ h2 {
   justify-content: center;
 }
 
-.navbar-dropdown {
-  background-color: white;
+.menu-label {
+  font-size: 1.25rem;
+}
+
+.navbar-item,
+.menu-list li a {
+  background-color: transparent;
+  color: black;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 .navbar-dropdown .navbar-item {
@@ -60,44 +89,6 @@ h2 {
 
 .navbar-dropdown .navbar-item.more-button {
   color: white !important;
-}
-
-.hero {
-  background-color: var(--secondary-color);
-  color: var(--dark-color);
-  text-align: center;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-.hero-box {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 700px;
-  width: 100%;
-  margin: 0 auto 20px;
-}
-
-.columns {
-  max-width: 99%;
-}
-
-.box {
-  background-color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-footer {
-  background-color: var(--secondary-color);
-  padding: 20px;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
 }
 
 .button {
@@ -113,72 +104,10 @@ footer {
   background-color: var(--dark-color);
 }
 
-.menu-label {
-  font-size: 1.25rem;
-}
-
-.inverted-colors *:not(img) {
-  background-color: var(--dark1);
-  color: white;
-}
-
-.inverted-colors img {
-  filter: none;
-  mix-blend-mode: difference;
-}
-
-.navbar-item,
-.menu-list li a {
-  background-color: transparent;
-  color: black;
-  padding: 8px 12px;
-  border-radius: 5px;
-  margin: 5px;
-}
-
-.button {
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.spacer {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.button {
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
+/* Inverted colour selectors for nav */
 .inverted-colors .button {
   background-color: white;
   color: black !important;
-}
-
-#modal-button {
-  color: black;
-}
-
-#recipe-info-container p {
-  color: black;
-}
-
-.inverted-colors body {
-  background-color: var(--dark0) !important;
-}
-
-.inverted-colors .navbar {
-  background-color: var(--dark0) !important;
-  color: white;
 }
 
 .inverted-colors .menu-list li a {
@@ -186,112 +115,36 @@ footer {
   color: white;
 }
 
-html,
-body {
-  height: 100%;
-  overflow: auto;
+.inverted-colors .navbar-item #modal-button {
+  color: white;
 }
 
-/* carousel styling */
-
-.container-carousel {
-  max-width: 96vw;
-  padding: 0 1rem;
-}
-
-#recipeTitle {
-  margin: 2rem 0rem;
-}
-
-#trending {
-  margin: auto;
-  /* margin-top: 5rem; */
-}
-
-/* 
-#trending .trending-slider {
-  padding: 2rem 0;
-  position: relative;
-} */
-
-.trending-slide {
-  width: 30rem;
-  height: 30rem;
-  position: relative;
-}
-
-.trending-slide .trending-slide-img img {
-  width: 50vw;
-  height: 50vh;
+/* Modal Stlying */
+#search-form {
+  border: black solid 1.5rem;
   border-radius: 2rem;
-  object-fit: cover;
+  background-color: black;
 }
 
-.swiper-slide-shadow-left,
-.swiper-slide-shadow-right {
-  display: none;
+/* HERO SECTION STYLING */
+.hero {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+  text-align: center;
 }
 
-.inverted-colors #recipe-info-container p {
-  color: white;
+.container {
+  display: flex;
+  justify-content: center;
 }
 
-#carousel-row {
+.hero-box {
   background-color: white;
-  /* background-color: var(--dark0); */
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 20px 0px;
   border-radius: 10px;
-  margin: auto;
-}
-
-/* media queries */
-@media (max-width: 500px) {
-  .trending-slide {
-    width: 28rem !important;
-    height: 36rem !important;
-  }
-  .trending-slide .trending-slide-img {
-    width: 28rem !important;
-    height: 36rem !important;
-  }
-}
-
-@media (max-width: 500px) {
-  #trending .trending-slider {
-    height: 45rem;
-  }
-}
-
-#recipe-ingredients {
-  overflow: auto; 
-  max-height: 300px;
-  padding: 10px;
-  margin-bottom: 20px;
-  margin-top: 5%;
-  padding-left: 30px;
-}
-
-#recipe-info {
-  overflow: auto; 
-  max-height: 300px;
-  padding-left: 30px;
-}
-
-#yt-video {
-  width: 556px; 
-  height: 370px;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.inverted-colors .navbar-item#modal-button {
-  color: white;
-}
-
-#gitPage {
-  color: black;
-  font-weight: 600;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 20px;
 }
 
 h2.title {
@@ -302,4 +155,175 @@ h2.title {
 
 .inverted-colors h2.title {
   color: white;
+}
+
+/* MAIN CONTENT STYLING */
+.columns {
+  max-width: 99%;
+}
+
+.box {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.spacer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+#carousel-row {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  margin: auto;
+}
+
+#recipe-info-container p #modal-button {
+  color: black;
+}
+
+.inverted-colors #recipe-info-container,
+.inverted-colors #carousel-row,
+.inverted-colors
+  *:not(img):not(.modal):not(.modal-background):not(.field):not(.control):not(
+    .label
+  ):not(.checkbox):not(.has-text-primary):not(.button):not(footer):not(strong) {
+  background-color: var(--dark1);
+  color: white;
+}
+
+.inverted-colors #recipe-info-container p {
+  color: white;
+}
+
+/* Fetch/ Dynamically Created Data Display */
+#recipe-ingredients {
+  overflow: auto;
+  max-height: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 5%;
+  padding-left: 30px;
+}
+
+#recipe-info {
+  overflow: auto;
+  max-height: 300px;
+  padding-left: 30px;
+}
+
+#yt-video {
+  width: 556px;
+  height: 370px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#fav-button {
+  font-weight: 600;
+}
+
+/* CAROUSEL STYLING BELOW */
+/* Text Styling */
+h2 {
+  font-family: "cheese", Arial;
+  font-size: 4rem;
+}
+
+#recipeTitle {
+  font-family: "Gula", Arial;
+  font-size: 2.5rem;
+}
+
+/* Container Styling */
+
+.container-carousel {
+  padding: 0 1rem;
+}
+
+#recipeTitle {
+  margin: 2rem 0rem;
+}
+
+#trending {
+  margin: auto;
+  max-width: 100%;
+}
+
+.trending-slide {
+  width: 30rem;
+  height: 30rem;
+}
+
+.trending-slide-img img {
+  width: 50vw;
+  height: 30vh;
+  border-radius: 2rem;
+  object-fit: cover;
+  border: black solid 2px;
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+/* FOOTER STYLING */
+footer {
+  background-color: transparent;
+  padding: 20px;
+  text-align: center;
+  bottom: 0;
+  width: 50%;
+  margin: auto;
+}
+
+/* MEDIA QUERIES FOR RESPONSIVE LAYOUT */
+/* Media query: Mobile */
+@media (max-width: 360px) {
+  .trending-slide {
+    width: 10rem !important;
+    height: 13rem !important;
+  }
+  .trending-slide-img img {
+    width: 10rem !important;
+    height: 10rem !important;
+  }
+  #recipeTitle {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h2.title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Media query: Tablet */
+@media (min-width: 370px) and (max-width: 1024px) {
+  .trending-slide {
+    width: 15rem !important;
+    height: 18rem !important;
+  }
+  .trending-slide-img img {
+    width: 15rem !important;
+    height: 15rem !important;
+  }
+  h2 {
+    font-size: 2.3rem;
+  }
+  #recipeTitle {
+    font-size: 2rem;
+  }
+  main {
+    flex-direction: row;
+  }
+  h2.title {
+    font-size: 3rem;
+  }
 }

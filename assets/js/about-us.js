@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Get all "navbar-burger" elements
+  const navbarBurgers = document.querySelectorAll(".navbar-burger");
+
+  // Attach click event listener to each navbar burger
+  for (let i = 0; i < navbarBurgers.length; i++) {
+    const el = navbarBurgers[i];
+    el.addEventListener("click", function () {
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const targetElement = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle("is-active");
+      targetElement.classList.toggle("is-active");
+    });
+  }
+});
+
 const modeBtn = document.querySelector("#mode-toggle");
 const bodyEl = document.querySelector("body");
 modeBtn.addEventListener("click", function () {
