@@ -145,7 +145,7 @@ const TrendingSlider = new Swiper(".trending-slider", {
   },
 });
 
-// displayCarousel();
+displayCarousel();
 
 // FUNCTION TO HAVE NAVBURGER BECOME ACTIVE IN MEDIA QUERY
 document.addEventListener("DOMContentLoaded", function () {
