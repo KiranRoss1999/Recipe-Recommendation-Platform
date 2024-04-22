@@ -5,8 +5,31 @@ CookTube is a simple website that provides customization to recipe ideas and sea
 
 Don't know what to cook but you have a main ingredient to use? You can search for that. Looking for vegetarian for your friend but don't know any recipes? We have a search for that too. While other website such as this exist, this comes without the overwhelming content bombing, ads, and complex UI or need to jump between multiple pages, leaving just the desired product and the user.
 
-Table of Contents
-User Story: As a home cook, I want to have the freedom of numerous options for recipes, so that I can hone my cooking skills and impress my friends and family. As a vegan, I want to find recipes specific to my diet and lifestyle, so I don’t have to waste time and energy researching to find something suitable. As a mother/father of children I want to be able to find nutritious and varied meals, So that my children can have a healthy and balanced diet. Acceptance Criteria Given that I am searching for lamb roast recipes for tonight, When I search lamb roast in the form, Then 5 results of lamb roasts will display on the left. When I click on one of the recipes, Then it will display an image, youtube video, recipe, and nutritional information on the page. When I click on the ‘favourite’ button, Then it will save my favourited recipe to the page. When I scroll through the Popular Recipes of the Week for ideas, Then I see the names of the recipes as well. When I open the page on my phone or tablet, Then the page gets smaller in size to adjust to my device.
+User Stories:
+As a home cook, 
+I want to have the freedom of numerous options for recipes,
+so that I can hone my cooking skills and impress my friends and family. 
+
+As a vegan, 
+I want to find recipes specific to my diet and lifestyle,
+so I don’t have to waste time and energy researching to find something suitable. 
+
+As a mother/father of children,
+I want to be able to find nutritious and varied meals,
+so that my children can have a healthy and balanced diet. 
+
+Acceptance Criteria 
+Given that I am searching for lamb roast recipes for tonight,
+When I search lamb roast in the form, 
+Then 5 results of lamb roasts will display on the left. 
+When I click on one of the recipes, 
+Then it will display an image, youtube video, recipe, and nutritional information on the page. 
+When I click on the ‘favourite’ button, 
+Then it will save my favourited recipe to the page. 
+When I scroll through the Popular Recipes of the Week for ideas, 
+Then I see the names of the recipes as well. 
+When I open the page on my phone or tablet, 
+Then the page gets smaller in size to adjust to my device.
 
 ## Installation
 No installations are required - the frameworks are all implemented via cdn links that are in the HTML!
