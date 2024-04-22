@@ -12,9 +12,11 @@ User Story: As a home cook, I want to have the freedom of numerous options for r
 No installations are required - the frameworks are all implemented via cdn links that are in the HTML!
 
 ## Usage
-homepage
 
-aboutpage
+![homepage](https://github.com/KiranRoss1999/Recipe-Recommendation-Platform/assets/158979754/b8719923-08f9-4d27-b562-0fb8e47494cf)
+
+![aboutpage](https://github.com/KiranRoss1999/Recipe-Recommendation-Platform/assets/158979754/4416284b-cfb4-4969-8f60-3fec2e528c83)
+
 
 ## Credits
 Shaun (Net Ninja profile): A lovely developer and content creator with a generous playlist demonstrating the application of the BULMA CSS frameworks. https://github.com/iamshaunjp/bulma-ui-build https://www.youtube.com/watch?v=SCSAExGFK1E&t=5s
