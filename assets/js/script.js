@@ -3,15 +3,16 @@ const ytAPIKey = "AIzaSyCawopGL82AFkgjtzzGG56lw1ZIb4HZcmQ";
 // const ytAPIKey = `AIzaSyB8JunYZS0Tfsbqfzs5h2nSe-k9L1AgVGI`;
 
 // const spoonAPIKey = `7a974e772bec455da7a065c595ebe2b3`;
-const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
+// const spoonAPIKey = `69a78db739a642a7872981d09f236e5a`;
 
 // const spoonAPIKey = `6fd0fad522364dd69dd61639b15aa659`;
-// const spoonAPIKey = `75fbd3ac66284b7e9e621722cddc49f9`;
+const spoonAPIKey = `75fbd3ac66284b7e9e621722cddc49f9`;
 // const spoonAPIKey = `d0f41511e14045bd910e9c7e16cf1952`;
 
 // const spoonAPIKey = `22d4fcd6a1bc486d99ef6e6a6671d701`;
 // const mitraAPIKey = `07b90ac4c2c44b42b5f99c3bc714f49e`;
-const mitraAPIKey = `dc0bf729c1574eea929baf3fa523b239`;
+// const mitraAPIKey = `dc0bf729c1574eea929baf3fa523b239`;
+const mitraAPIKey = `d0f41511e14045bd910e9c7e16cf1952`
 
 // Modal selectors
 const modalEl = document.getElementById(`search-modal`);
@@ -144,7 +145,7 @@ const TrendingSlider = new Swiper(".trending-slider", {
   },
 });
 
-displayCarousel();
+// displayCarousel();
 
 // FUNCTION TO HAVE NAVBURGER BECOME ACTIVE IN MEDIA QUERY
 document.addEventListener("DOMContentLoaded", function () {
